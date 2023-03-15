@@ -1,0 +1,47 @@
+<mxfile host="65bd71144e">
+    <diagram id="rVMtTsMFzs3qMSKeC9BQ" name="Page-1">
+        <mxGraphModel dx="933" dy="530" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="10" style="edgeStyle=none;shape=link;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.111;entryY=0.455;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#0d0d0d;" edge="1" parent="1" source="2" target="3">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" style="edgeStyle=none;shape=link;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#0d0d0d;" edge="1" parent="1" source="2" target="5">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="200" y="115"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;RECEPT&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;recept id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;plaatser id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;omschrijving id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;favoriet&lt;/li&gt;&lt;li&gt;sterren&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="180" width="180" height="170" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" style="edgeStyle=none;shape=link;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.056;entryY=0.344;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#0d0d0d;" edge="1" parent="1" source="3" target="4">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;BOODSCHAP&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;recept id&lt;/b&gt;&lt;b&gt;&amp;nbsp;&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;ingredient id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;aantal&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="215" width="180" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;INGREDIENT&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;ingredient id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;ingredient naam&lt;/li&gt;&lt;li&gt;ingredient prijs&lt;/li&gt;&lt;li&gt;ingredient beschrijving&lt;/li&gt;&lt;li&gt;hoeveelheid&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="580" y="215" width="180" height="160" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;OPMERKING&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;recept id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;&lt;b&gt;opmerking id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;naam gebruiker&lt;/li&gt;&lt;li&gt;opmerking gebruiker&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="340" y="50" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" style="edgeStyle=none;shape=link;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;fontColor=#0d0d0d;" edge="1" parent="1" source="6" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;Omschrijving&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;omschrijving id&lt;/b&gt;&lt;/li&gt;&lt;li&gt;titel&lt;/li&gt;&lt;li&gt;keuken&lt;/li&gt;&lt;li&gt;type&lt;/li&gt;&lt;li&gt;omschrijving&lt;/li&gt;&lt;li&gt;aantal personen&lt;/li&gt;&lt;li&gt;bereidingswijze&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="10" y="400" width="180" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" style="edgeStyle=none;shape=link;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.706;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;fontColor=#0d0d0d;" edge="1" parent="1" source="8" target="2">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="&lt;font color=&quot;#0d0d0d&quot;&gt;&lt;span style=&quot;background-color: rgb(249, 240, 240);&quot;&gt;Plaatser&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;plaatser id&lt;/b&gt;&lt;br&gt;&lt;/li&gt;&lt;li&gt;naam plaatser&lt;/li&gt;&lt;li&gt;datum geplaatst&lt;/li&gt;&lt;/ul&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;gradientColor=#b3b3b3;strokeColor=#666666;align=left;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="210" y="400" width="180" height="100" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
