@@ -24,10 +24,12 @@ $sql = "CREATE TABLE gerecht_info (
     gerecht_info_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     record_type VARCHAR(30) NOT NULL,
     gerecht_id VARCHAR(30) NOT NULL,
-    user_id VARCHAR(30) NOT NULL,
+    user_id VARCHAR(30),
     datum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     nummeriekveld INT(6),
-    tekstveld VARCHAR(200)
+    tekstveld VARCHAR(200),
+    PRIMARY KEY(gerecht_info_id),
+    FOREIGN KEY(gerecht_id) REFERENCES gerecht(gerecht_id),
     )";
     
     if ($conn->query($sql) === TRUE) {
@@ -45,7 +47,11 @@ $sql = "CREATE TABLE gerecht (
     datum_toegevoegd TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     titel VARCHAR(30) NOT NULL,
     korte_omschrijving VARCHAR(200) NOT NULL,
-    lange_omschrijving VARCHAR(400) NOT NULL
+    lange_omschrijving VARCHAR(400) NOT NULL,
+    PRIMARY KEY(gerecht_id),
+    FOREIGN KEY(keuken_id) REFERENCES type_keuken(type_keuken_id),
+    FOREIGN KEY(type_id) REFERENCES type_keuken(type_keuken_id),
+    FOREIGN KEY(user_id) REFERENCES user(user_id)
     )";
     
     if ($conn->query($sql) === TRUE) {
@@ -58,7 +64,8 @@ $sql = "CREATE TABLE gerecht (
 $sql = "CREATE TABLE type_keuken (
     type_keuken_id INT(6) NOT NULL,
     record_type VARCHAR(30) NOT NULL,
-    omschrijving VARCHAR(30) NOT NULL
+    omschrijving VARCHAR(30) NOT NULL,
+    PRIMARY KEY(type_keuken_id)
     )";
     
     if ($conn->query($sql) === TRUE) {
@@ -74,7 +81,8 @@ $sql = "CREATE TABLE gerecht (
     user_name VARCHAR(30) NOT NULL,
     user_password VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
-    afbeelding VARCHAR(200)
+    afbeelding VARCHAR(200),
+    PRIMARY KEY(user_id)
     )";
     
     if ($conn->query($sql) === TRUE) {
@@ -88,7 +96,10 @@ $sql = "CREATE TABLE ingredient (
     ingredient_id INT(6) NOT NULL,
     gerecht_id INT(6) NOT NULL,
     artikel_id INT(6) NOT NULL,
-    aantal INT(6) NOT NULL
+    aantal INT(6) NOT NULL,
+    PRIMARY KEY(ingredient_id),
+    FOREIGN KEY(gerecht_id) REFERENCES gerecht(gerecht_id),
+    FOREIGN KEY(artikel_id) REFERENCES artikel(artikel_id)    
     )";
     
     if ($conn->query($sql) === TRUE) {
@@ -102,9 +113,10 @@ $sql = "CREATE TABLE gerecht (
     artikel_id INT(6) NOT NULL,
     naam VARCHAR(30) NOT NULL,
     omschrijving VARCHAR(200) NOT NULL,
-    prijs INT(6) NOT NULL
-    eenheid INT(6) NOT NULL
-    verpakking INT(6) NOT NULL
+    prijs INT(6) NOT NULL,
+    eenheid INT(6) NOT NULL,
+    verpakking INT(6) NOT NULL,
+    PRIMARY KEY(artikel_id)
     )";
     
     if ($conn->query($sql) === TRUE) {
