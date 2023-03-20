@@ -23,8 +23,8 @@ echo "Connected successfully";
 $sql = "CREATE TABLE gerecht_info (
     gerecht_info_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     record_type VARCHAR(30) NOT NULL,
-    gerecht_id VARCHAR(30) NOT NULL,
-    user_id VARCHAR(30),
+    gerecht_id INT(6) NOT NULL,
+    user_id INT(6),
     datum TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     nummeriekveld INT(6),
     tekstveld VARCHAR(200),
@@ -137,16 +137,16 @@ $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user
 VALUES (1, B, 2, 1, 04-03-2023, 1, 'Olie op laag vuur.')";
 
 $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user_id, datum, nummeriekveld, tekstveld)
-VALUES (2, B, 2, 1, 04-03-2023, 1, 'Braad het vlees.')";
+VALUES (2, B, 2, 1, 04-03-2023, 2, 'Braad het vlees.')";
 
 $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user_id, datum, nummeriekveld, tekstveld)
-VALUES (3, B, 2, 1, 04-03-2023, 1, 'Snij de avocado.')";
+VALUES (3, B, 2, 1, 04-03-2023, 3, 'Snij de avocado.')";
 
 $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user_id, datum, nummeriekveld, tekstveld)
-VALUES (4, B, 2, 1, 04-03-2023, 1, 'Beleg het broodje.')";
+VALUES (4, B, 2, 1, 04-03-2023, 4, 'Beleg het broodje.')";
 
 $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user_id, datum, nummeriekveld, tekstveld)
-VALUES (5, B, 2, 1, 04-03-2023, 1, 'Maak het af met saus.')";
+VALUES (5, B, 2, 1, 04-03-2023, 5, 'Maak het af met saus.')";
 
     // Opmerkingen
 $sql = "INSERT INTO gerecht_info (gerecht_info_id, record_type, gerecht_id, user_id, datum, tekstveld)
