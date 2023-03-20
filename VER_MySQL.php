@@ -7,10 +7,11 @@
         <?php
 $servername = "localhost";
 $username = "root";
+$password = null;
 $dbname = "verrukkulluk";
 
 // Create connection
-$conn = new mysqli($servername, $username, $dbname);
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
@@ -21,7 +22,7 @@ echo "Connected successfully";
 // create tables
 // table: gerecht_info
 $sql = "CREATE TABLE gerecht_info (
-    gerecht_info_id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    gerecht_info_id INT(6) AUTO_INCREMENT PRIMARY KEY,
     record_type VARCHAR(30) NOT NULL,
     gerecht_id INT(6) NOT NULL,
     user_id INT(6),
@@ -29,9 +30,13 @@ $sql = "CREATE TABLE gerecht_info (
     nummeriekveld INT(6),
     tekstveld VARCHAR(200),
     PRIMARY KEY(gerecht_info_id),
-    FOREIGN KEY(gerecht_id) REFERENCES gerecht(gerecht_id),
+    FOREIGN KEY(gerecht_id) REFERENCES gerecht(gerecht_id)
     )";
     
+    echo "<pre>";
+echo $sql;
+die();
+
     if ($conn->query($sql) === TRUE) {
       echo "Table gerecht_info created successfully";
     } else {
