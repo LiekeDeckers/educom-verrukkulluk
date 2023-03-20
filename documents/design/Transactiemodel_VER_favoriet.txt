@@ -1,0 +1,23 @@
+title Verrukkeluk Favoriet
+
+participant: Gebruiker
+participant: Front End
+particpant: Back End
+particpant: Database
+ 
+==transactie: Favoriet toevoegen==
+Gebruiker->Front End: klikt op het hartje
+Front End->Back End: stuur gegevens (id, data)
+
+Back End->Database: bijwerken data met user_id
+Database-->Back End:
+
+Back End->Database: ophalen data met recept_id
+Database-->Back End:
+
+
+Back End--> Front End: versturen resultaat
+Front End-->Gebruiker: toont rood hartje
+
+
+

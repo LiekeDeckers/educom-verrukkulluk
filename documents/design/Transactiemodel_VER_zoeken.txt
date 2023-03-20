@@ -1,0 +1,32 @@
+title Verrukkeluk Zoeken
+
+participant: Gebruiker
+participant: Front End
+particpant: Back End
+particpant: Database
+ 
+==transactie: Zoeken==
+Gebruiker->Front End: voert zoekterm in
+Front End->Back End: stuur gegevens (id, data)
+
+Back End->Database: ophalen data met het keyword
+Database-->Back End:
+
+Back End->Database: ophalen gerechten met recept_id
+Database-->Back End:
+
+Back End->Database: ophalen producten met artikel_id
+Database-->Back End:
+
+Back End->Database: ophalen waarderingen met waardering_id
+Database-->Back End:
+
+Back End->Back End: waardering berekenen
+Back End->Back End: kcal berekenen
+Back End->Back End: prijs berekenen
+
+Back End--> Front End: versturen resultaat berekeningen
+Front End-->Gebruiker: toont bijgewerkte homepage
+
+
+

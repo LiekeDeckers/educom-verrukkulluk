@@ -1,0 +1,23 @@
+title Verrukkeluk Boodschappenlijst
+
+participant: Gebruiker
+participant: Front End
+particpant: Back End
+particpant: Database
+ 
+==transactie: Boodschappenlijst==
+Gebruiker->Front End: klikt op 'op lijst'
+Front End->Back End: stuur gegevens (id, data)
+
+Back End->Database: ophalen recept met gerecht_id
+Database-->Back End: 
+Back End->Database: ophalen producten met artikel_id
+Database-->Back End:
+
+Database-->Back End: 
+Back End->Back End: prijs berekenen
+Back End--> Front End: versturen resultaat berekeningen
+Front End-->Gebruiker: toont receptpagina
+
+
+

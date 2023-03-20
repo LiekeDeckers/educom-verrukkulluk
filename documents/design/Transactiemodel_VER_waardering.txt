@@ -1,0 +1,21 @@
+title Verrukkeluk Waardering
+
+participant: Gebruiker
+participant: Front End
+particpant: Back End
+particpant: Database
+ 
+==transactie: Waardering toevoegen==
+Gebruiker->Front End: klikt op ster
+Front End->Back End: stuur gegevens (id, data)
+
+Back End->Database: bijwerken data met recept_id
+Database-->Back End:
+
+Back End->Back End: gemiddelde berekenen
+
+Back End--> Front End: versturen resultaat berekeningen
+Front End-->Gebruiker: toont bijgewerkte waardering
+
+
+
