@@ -76,7 +76,7 @@ $sql = "CREATE TABLE type_keuken (
 
 
 // table: user
-$sql = "CREATE TABLE gerecht (
+$sql = "CREATE TABLE user (
     user_id INT(6) NOT NULL,
     user_name VARCHAR(30) NOT NULL,
     user_password VARCHAR(30) NOT NULL,
@@ -109,7 +109,7 @@ $sql = "CREATE TABLE ingredient (
     }
 
 // table: artikel
-$sql = "CREATE TABLE gerecht (
+$sql = "CREATE TABLE artikel (
     artikel_id INT(6) NOT NULL,
     naam VARCHAR(30) NOT NULL,
     omschrijving VARCHAR(200) NOT NULL,
