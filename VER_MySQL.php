@@ -86,7 +86,7 @@ $sql = "CREATE TABLE user (
     )";
     
     if ($conn->query($sql) === TRUE) {
-      echo "Table gerecht created successfully";
+      echo "Table user created successfully";
     } else {
       echo "Error creating table: " . $conn->error;
     }
@@ -103,7 +103,7 @@ $sql = "CREATE TABLE ingredient (
     )";
     
     if ($conn->query($sql) === TRUE) {
-      echo "Table gerecht created successfully";
+      echo "Table ingredient created successfully";
     } else {
       echo "Error creating table: " . $conn->error;
     }
@@ -120,7 +120,7 @@ $sql = "CREATE TABLE artikel (
     )";
     
     if ($conn->query($sql) === TRUE) {
-      echo "Table gerecht created successfully";
+      echo "Table artikel created successfully";
     } else {
       echo "Error creating table: " . $conn->error;
     }
