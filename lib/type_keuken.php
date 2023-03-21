@@ -13,9 +13,9 @@ class type_keuken {
         $sql = "select * from type_keuken where id= $type_keuken_id";
 
         $result = mysqli_query($this->connection, $sql);
-        $artikel = mysqli_fetch_array($result, MYSQL_ASSOC);
+        $type_keuken = mysqli_fetch_array($result, MYSQL_ASSOC);
 
-        return($type_keuken_id);
+        return($type_keuken);
     }
 
 }
