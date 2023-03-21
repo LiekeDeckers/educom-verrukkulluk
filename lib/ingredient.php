@@ -17,6 +17,8 @@ class ingredient {
         
         return($ingredient);
     }
-    
-}
 
+// artikel aanroepen
+
+
+}
