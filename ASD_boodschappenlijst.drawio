@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="wleXDkbhm_6Zuc-ugeMy" name="Page-1">
-        <mxGraphModel dx="2027" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+        <mxGraphModel dx="1707" dy="652" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -112,7 +112,7 @@
                 <mxCell id="35" value="&lt;font color=&quot;#000000&quot;&gt;Business Logic&lt;/font&gt;" style="swimlane;startSize=20;html=1;fillColor=#6666FF;strokeColor=#000000;swimlaneFillColor=#6666FF;fontColor=#ffffff;" parent="33" vertex="1">
                     <mxGeometry x="200" y="20" width="500" height="190" as="geometry"/>
                 </mxCell>
-                <mxCell id="66" value="&lt;font color=&quot;#000000&quot;&gt;selecteer&lt;br&gt;artikel&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;strokeColor=#36393d;fillColor=#ffff88;" parent="35" vertex="1">
+                <mxCell id="66" value="&lt;font color=&quot;#000000&quot;&gt;selecteer&lt;br&gt;user&lt;/font&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;strokeColor=#36393d;fillColor=#ffff88;" parent="35" vertex="1">
                     <mxGeometry x="30" y="70" width="150" height="60" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="&lt;font color=&quot;#000000&quot;&gt;Model&lt;/font&gt;" style="swimlane;startSize=20;html=1;fillColor=#99CCFF;swimlaneFillColor=#99CCFF;strokeColor=#000000;" parent="33" vertex="1">
