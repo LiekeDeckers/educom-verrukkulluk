@@ -21,6 +21,7 @@ $data_ing = $ing->selecteerIngredient(1);
 
 
 /// RETURN
+echo '<pre>';
 var_dump($data_art);
 var_dump($data_usr);
 var_dump($data_tk);
