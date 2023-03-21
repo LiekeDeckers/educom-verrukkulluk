@@ -2,7 +2,7 @@
 
 // Aanpassen naar je eigen omgeving
 define("USER", "root");
-define("PASSWORD", "root");
+define("PASSWORD", null);
 define("DATABASE", "verrukkulluk");
 define("HOST", "localhost");
 
