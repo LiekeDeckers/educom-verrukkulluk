@@ -17,12 +17,12 @@ $ing = new ingredient($db->getConnection());
 $data_art = $art->selecteerArtikel(1);
 $data_usr = $usr->selecteerUser(1);
 $data_tk = $tk-> selecteerTypeKeuken(1);
-$data_ing = $ing->selecteerIngredient(1);
+$data_ing = $ing->selecteerIngredient(2);
 
 
 /// RETURN
 echo '<pre>';
-var_dump($data_art);
-var_dump($data_usr);
-var_dump($data_tk);
+//var_dump($data_art);
+//var_dump($data_usr);
+//var_dump($data_tk);
 var_dump($data_ing);

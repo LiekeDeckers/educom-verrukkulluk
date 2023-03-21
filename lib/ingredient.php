@@ -9,19 +9,40 @@ class ingredient {
 
     public function __construct($connection) {
         $this->connection = $connection;
+        $this->art = new artikel($connection);
     }
 
-    public function selecteerIngredient($ingredient_id) {
+    private function ophalenArtikel($artikel_id) {
+        $data_art = $this->art->selecteerArtikel($artikel_id);
+        return ($data_art);
+    }
 
-        $sql = "select * from ingredient where ingredient_id = $ingredient_id";
-
+    public function selecteerIngredient($gerecht_id) {
+        $ingredient_artikel = [];
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id";
+        //echo $sql;
         $result = mysqli_query($this->connection, $sql);
-        $ingredient = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        
-        return($ingredient);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $artikel_id = $row['artikel_id'];
+            echo $artikel_id;
+            $artikel = $this->ophalenArtikel($artikel_id);
+            //var_dump($artikel);
+
+        $ingredient_artikel = array(
+            'ingredient_id' => $row['ingredient_id'],
+            'gerecht_id' => $row['gerecht_id'],
+            'aantal' => $row['aantal'],
+            'naam' => $artikel['naam'],
+            'omschrijving' => $artikel['omschrijving'],
+            'prijs' => $artikel['prijs'],
+            'eenheid' => $artikel['eenheid'],
+            'verpakking' => $artikel['verpakking']
+        );
     }
 
-// nog iets met selecteerArtikel
-
+        return($ingredient_artikel);
+    }
 
 }
+
