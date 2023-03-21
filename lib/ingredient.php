@@ -29,7 +29,7 @@ class ingredient {
             $artikel = $this->ophalenArtikel($artikel_id);
             //var_dump($artikel);
 
-        $ingredient_artikel = array(
+        $ingredient_artikel[]= [
             'ingredient_id' => $row['ingredient_id'],
             'gerecht_id' => $row['gerecht_id'],
             'aantal' => $row['aantal'],
@@ -38,7 +38,7 @@ class ingredient {
             'prijs' => $artikel['prijs'],
             'eenheid' => $artikel['eenheid'],
             'verpakking' => $artikel['verpakking']
-        );
+        ];
     }
 
         return($ingredient_artikel);
