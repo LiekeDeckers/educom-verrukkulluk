@@ -119,7 +119,7 @@ $sql = "CREATE TABLE artikel (
     naam VARCHAR(30) NOT NULL,
     omschrijving VARCHAR(200) NOT NULL,
     prijs INT(6) NOT NULL,
-    eenheid INT(6) NOT NULL,
+    eenheid VARCHAR(30) NOT NULL,
     verpakking INT(6) NOT NULL,
     PRIMARY KEY(artikel_id)
     )";
