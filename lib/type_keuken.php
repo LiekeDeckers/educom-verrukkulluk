@@ -10,10 +10,10 @@ class type_keuken {
 
     public function selecteerTypeKeuken($type_keuken_id) {
 
-        $sql = "select * from type_keuken where id= $type_keuken_id";
+        $sql = "select * from type_keuken where type_keuken_id= $type_keuken_id";
 
         $result = mysqli_query($this->connection, $sql);
-        $type_keuken = mysqli_fetch_array($result, MYSQL_ASSOC);
+        $type_keuken = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         return($type_keuken);
     }
