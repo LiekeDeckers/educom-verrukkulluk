@@ -51,7 +51,7 @@ class gerecht_info {
     }
     
 // aan favorieten toevoegen/verwijderen
-    public function toevoegenFavoriet($gerecht_id, $user_id) {
+    /*public function toevoegenFavoriet($gerecht_id, $user_id) {
         $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
         VALUES('F', $gerecht_id, $user_id)";
             if(mysqli_query($this->connection, $sql)) {
@@ -64,7 +64,23 @@ class gerecht_info {
             if(mysqli_query($this->connection, $sql)) {    
             echo "Verwijderd uit favorieten";
             }
+    } */
+
+
+    public function toevoegenFavoriet($gerecht_id, $user_id) {
+        if(($record_type == 'F' && $gerecht_id && $user_id) === false) {
+            $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
+            VALUES('F', $gerecht_id, $user_id)";
+            echo "Toegevoegd aan favorieten";   
+        }
     }
+
+    public function verwijderenFavoriet($gerecht_id) {
+        if(($record_type == 'F' && $gerecht_id && $user_id) === true) {
+        $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
+        echo "Verwijderd uit favorieten";
+        }
+    } 
 
 }
 
@@ -72,19 +88,6 @@ class gerecht_info {
 
 
 
-/* public function toevoegenFavoriet($gerecht_id, $user_id) {
-        if(($record_type == 'F' && $gerecht_id && $user_id) === true) {
-            $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
-            echo "Verwijderd uit favorieten";
-        }
 
-        else { 
-            $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
-            VALUES('F', $gerecht_id, $user_id)";
-            echo "Toegevoegd aan favorieten";
-        }
-    } 
-    
-    of iets met true en false ??
-    */
+
 
