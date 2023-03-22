@@ -16,13 +16,14 @@ class gerecht_info {
         return($data_usr);
     }
 
-    public function selecteerGerechtInfo($gerecht_id) {
-        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id";
-        //echo $sql;
+    public function selecteerGerechtInfo($gerecht_id, $record_type) {
+        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = '$record_type'";
+        echo $sql;
         $result = mysqli_query($this->connection, $sql);
 
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)); {
-            if ($row["record_type"] == 'O' || $row["record_type"] == 'F') { 
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            if ($record_type == 'O' || $record_type == 'F') { 
+                var_dump($row);
                 $user_id = $row['user_id'];
                 echo $user_id;
                 $user = $this->ophalenUser($user_id);
@@ -44,7 +45,7 @@ class gerecht_info {
             $gerecht_info[] = $row;
         }
 
-        return($ingredient_info);    
+        return($gerecht_info);    
         }
     }    
 }
