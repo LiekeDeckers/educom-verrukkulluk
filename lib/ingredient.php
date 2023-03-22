@@ -18,14 +18,14 @@ class ingredient {
     }
 
     public function selecteerIngredient($gerecht_id) {
-        $ingredient_artikel = [];
+        //$ingredient_artikel = [];
         $sql = "select * from ingredient where gerecht_id = $gerecht_id";
         //echo $sql;
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $artikel_id = $row['artikel_id'];
-            echo $artikel_id;
+            //echo $artikel_id;
             $artikel = $this->ophalenArtikel($artikel_id);
             //var_dump($artikel);
 
