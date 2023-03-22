@@ -19,35 +19,25 @@ class gerecht_info {
         $sql = "select * from gerecht_info where gerecht_id = $gerecht_id";
         $result = mysqli_query($this->connection, $sql);
 
-
-
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)); {
-            if $record_type = 'O' {
+            if ($row["record_type"] == 'O' || $row["record_type"] == 'F') { 
                 $user_id = $row['user_id'];
                 $user = $this->ophalenUser($user_id);
-            }
-            elseif ($record_type('F') {
-                $user_id = $row['user_id'];
-                $user = $this->ophalenUser($user_id);
-            }
-            else {
-                // ??
-            }
-        
+            
             $gerecht_info_user[] = [
                 'gerecht_info_id' => $row['gerecht_info_id'],
                 'record_type' => $row['record_type'],   
-                'gerecht_id' => $['gerecht_id'],
+                'gerecht_id' => $row['gerecht_id'],
                 'datum' => $row['datum'],
                 'nummeriekveld' => $row['nummeriekveld'],
                 'tekstveld' => $row['tekstveld'],
                 'user_name' => $user['user_name'],
                 'user_password' => $user['user_password'],
-                'email' => $user['email'],
-
-            ]
+                'email' => $user['email']
+            ];
         }
 
-        return($ingredient_info);
-    }
+        return($ingredient_info_user);    
+        }
+    }    
 }
