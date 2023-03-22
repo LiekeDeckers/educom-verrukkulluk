@@ -1,9 +1,10 @@
 <?php
+require_once("lib/user.php");
 
 class gerecht_info {
 
     private $connection;
-    private $user;
+    private $usr;
 
     public function __construct($connection) {
         $this->connection = $connection;
