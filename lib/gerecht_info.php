@@ -52,16 +52,39 @@ class gerecht_info {
     
 // aan favorieten toevoegen/verwijderen
     public function toevoegenFavoriet($gerecht_id, $user_id) {
-        if($record_type == 'F' && $gerecht_id == null && $user_id == null) {
         $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
         VALUES('F', $gerecht_id, $user_id)";
-        echo "Toegevoegd aan favorieten";
-        }
-
-        else {
-            $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
-            echo "Verwijderd uit favorieten";
+            if(mysqli_query($this->connection, $sql)) {
+            echo "Toegevoegd aan favorieten";
         }
     }
 
+    public function verwijderenFavoriet($gerecht_id) {
+        $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
+            if(mysqli_query($this->connection, $sql)) {    
+            echo "Verwijderd uit favorieten";
+            }
+    }
+
 }
+
+
+
+
+
+/* public function toevoegenFavoriet($gerecht_id, $user_id) {
+        if(($record_type == 'F' && $gerecht_id && $user_id) === true) {
+            $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
+            echo "Verwijderd uit favorieten";
+        }
+
+        else { 
+            $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
+            VALUES('F', $gerecht_id, $user_id)";
+            echo "Toegevoegd aan favorieten";
+        }
+    } 
+    
+    of iets met true en false ??
+    */
+
