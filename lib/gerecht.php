@@ -60,7 +60,7 @@ class gerecht {
     }
 
 
-//berekenen calorien                          // calorien artikel toevoegen aan tabel
+//berekenen calorien --> calorien artikel toevoegen aan tabel
     public function berekenCalorien($gerecht_id) {
         $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
         $result = mysqli_query($this->connection, $sql);
@@ -72,9 +72,15 @@ class gerecht {
     }
 
 
-//berekenen prijs
+//berekenen prijs --> werkt niet
     public function berekenPrijs($gerecht_id) {
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
+        $result = mysqli_query($this->connection, $sql);
 
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $prijs_gerecht = (($aantal / $verpakking) * $prijs);
+        }
+        return($prijs_gerecht);
     }
 
 //ophalen waardering --> werkt niet
