@@ -49,22 +49,15 @@ class gerecht {
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $user_id = $row['user_id'];
             $user = $this->ophalenUser($user_id);
+            
+//ophalen ingredient
+            $gerecht_id = $row['gerecht_id'];
+            $gerecht = $this->ophalenIngredient($gerecht_id);
+
             $gerecht[] = $row + $user;
         }
         return($gerecht);
     }
-
-//ophalen ingredient
-    public function selecteerGerecht($gerecht_id) {
-        $sql = "select * from gerecht where gerecht_id = $gerecht_id";
-        $result = mysqli_query($this->connection, $sql);
-
-    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $ingredient_id = $ingredient['ingredient_id'];
-        $ingredient = $this->ophalenIngredient($ingredient_id);
-        $gerecht[] = $ingreient + $row;
-    }
-    return($gerecht);
 }
 
 
@@ -77,5 +70,3 @@ class gerecht {
 //ophalen type
 //maak favoriet
 
-
-}
