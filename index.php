@@ -22,9 +22,8 @@ $data_art = $art->selecteerArtikel(1);
 $data_usr = $usr->selecteerUser(2);
 $data_tk = $tk-> selecteerTypeKeuken(1);
 $data_ing = $ing->selecteerIngredient(2);
-$data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'F');
+$data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'W');
 $data_ger = $ger->selecteerGerecht(2);
-
 
 /// RETURN
 echo '<pre>';

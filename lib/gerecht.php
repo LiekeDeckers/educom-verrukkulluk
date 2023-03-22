@@ -58,15 +58,43 @@ class gerecht {
         }
         return($gerecht);
     }
+
+
+//berekenen calorien                          // calorien artikel toevoegen aan tabel
+    public function berekenCalorien($gerecht_id) {
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $calorien_gerecht = (($aantal / $verpakking) * $calorien_artikel);
+        }
+        return($calorien_gerecht);
+    }
+
+
+//berekenen prijs
+    public function berekenPrijs($gerecht_id) {
+
+    }
+
+//ophalen waardering --> werkt niet
+    public function selecteerGerechtInfo($gerecht_id, $record_type) {
+        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = '$record_type'";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            if ($record_type == 'W') { 
+            $gerecht_id = $row['gerecht_id'];
+            $gerecht = $this->ophalenGerechtInfo($gerecht_id);
+            $waardering[] = $row + $gerecht;
+        }
+        return($waardering);
+    }
+    }
 }
 
-
-//berekenen calorien
-//berekenen prijs
-//ophalen waardering
 //ophalen bereidingswijze stappen
 //ophalen opmerkingen
 //ophalen keuken
 //ophalen type
-//maak favoriet
-
+//maak favoriet 
