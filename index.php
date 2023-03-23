@@ -22,7 +22,7 @@ $data_art = $art->selecteerArtikel(1);
 $data_usr = $usr->selecteerUser(2);
 $data_tk = $tk-> selecteerTypeKeuken(1);
 $data_ing = $ing->selecteerIngredient(2);
-$data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'W');
+$data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'F', 2);
 $data_ger = $ger->selecteerGerecht(2);
 
 /// RETURN
@@ -31,5 +31,5 @@ echo '<pre>';
 //var_dump($data_usr);
 //var_dump($data_tk);
 //var_dump($data_ing);
-//var_dump($data_gerinfo);
-var_dump($data_ger);
+var_dump($data_gerinfo);
+//var_dump($data_ger);
