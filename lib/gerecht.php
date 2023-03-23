@@ -92,13 +92,14 @@ class gerecht {
 //ophalen waardering --> werkt niet
     public function selecteerGerechtInfo($gerecht_id, $record_type) {
         $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = '$record_type'";
+        echo $sql;
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             if ($record_type == 'W') { 
             $gerecht_id = $row['gerecht_id'];
             $gerecht = $this->ophalenGerechtInfo($gerecht_id);
-            $waardering[] = $row + $gerecht;
+            $waardering[] = [$row + $gerecht];
         }
         return($waardering);
     }
