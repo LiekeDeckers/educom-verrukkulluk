@@ -41,6 +41,10 @@ class gerecht {
         return($data_gerinfo);
     }
 
+    private function ophalenWaardering($gerecht_id) {
+        return $this->ger_info->selecteerGerechtInfo($gerecht_info_id, 'W');
+    }
+
 //ophalen user
     public function selecteerGerecht($gerecht_id) {
         $sql = "select * from gerecht where gerecht_id = $gerecht_id";
