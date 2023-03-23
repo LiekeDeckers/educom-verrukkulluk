@@ -26,7 +26,7 @@ class gerecht {
         return($data_usr);
     }
 
-    private function ophalenTypeKeuken($user_id) {
+    private function ophalenTypeKeuken($type_keuken_id) {
         $data_tk = $this->tk->selecteerTypeKeuken($type_keuken_id);
         return($data_tk);
     }
@@ -43,6 +43,18 @@ class gerecht {
 
     private function ophalenWaardering($gerecht_id) {
         return $this->ger_info->selecteerGerechtInfo($gerecht_info_id, 'W');
+    }
+
+    private function ophalenFavoriet($gerecht_id) {
+        return $this->ger_info->selecteerGerechtInfo($gerecht_info_id, 'F');
+    }
+
+    private function ophalenOpmerking($gerecht_id) {
+        return $this->ger_info->selecteerGerechtInfo($gerecht_info_id, 'O');
+    }
+
+    private function ophalenBereiding($gerecht_id) {
+        return $this->ger_info->selecteerGerechtInfo($gerecht_info_id, 'B');
     }
 
 //ophalen user
@@ -90,27 +102,52 @@ class gerecht {
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $prijs_gerecht= (($ingredient["aantal"] / $ingredient["verpaking"]) * $ingredient["prijs"]);
         }
-        return array_sum($prijs_gerecht);
+        return array_sum($prijs_gerecht); 
     }
 
-//ophalen waardering --> werkt niet
-    public function selecteerGerechtInfo($gerecht_id, $record_type) {
-        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = '$record_type'";
+
+//ophalen waardering
+    public function selecteerGerechtInfo($gerecht_info_id, $record_type) {
+        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = 'W'";
         echo $sql;
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            if ($record_type == 'W') { 
             $gerecht_id = $row['gerecht_id'];
-            $gerecht = $this->ophalenGerechtInfo($gerecht_id);
-            $waardering[] = [$row + $gerecht];
+            $gerecht = $this->ophalenWaardering($gerecht_info_id);
+
+            $waardering[] = [
+                'gerecht__info_id' => $row['gerecht_info_id'],
+                'gerecht_id' => $row['gerecht_id'],
+                'record_type' => $row['record_type'],
+                'nummeriekveld' => $row['nummeriekveld'],
+            ];
         }
         return($waardering);
     }
-    }
-}
+
+
 
 //ophalen bereidingswijze stappen
+    public function selecteerBereiding($gerecht_id, $record_type) {
+        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = 'B'";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $gerecht_id = $row['gerecht_id'];
+            $gerecht = $this->ophalenBereiding($gerecht_id);
+
+        $bereiding[] = [
+            'gerecht__info_id' => $row['gerecht_info_id'],
+            'gerecht_id' => $row['gerecht_id'],
+            'record_type' => $row['record_type'],
+            'nummeriekveld' => $gerecht_info['nummeriekveld'],
+            'tekstveld' => $gerecht_info['tekstveld'],
+        ];
+        return($bereiding);
+        }
+    }
+}
 //ophalen opmerkingen
 //ophalen keuken
 //ophalen type
