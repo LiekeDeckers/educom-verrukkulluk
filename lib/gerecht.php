@@ -60,21 +60,23 @@ class gerecht {
     }
 
 
-//berekenen calorien
-    public function berekenCalorien($gerecht_id) {
-        $calorien_gerecht = [];
+//berekenen calorieen
+    private function berekenCalorieen($gerecht_id) {
+        $calorieen_gerecht = [];
 
-        $sql = "select * from gerecht where gerecht_id = $gerecht_id)";
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
         $result = mysqli_query($this->connection, $sql);
+        $ingredient = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $calorien_gerecht = (($aantal / $verpakking) * $calorien);
+
+        foreach($ingredients as $ingredient) {
+            $calorieen_gerecht = [(($ingredient["aantal"] / $ingredient["verpaking"]) * $ingredient["calorieen"])];
         }
-        return array_sum($calorien_gerecht);
+        return array_sum($calorieen_gerecht);
     }
 
 
-//berekenen prijs --> werkt niet
+//berekenen prijs
     public function berekenPrijs($gerecht_id) {
         $prijs_gerecht = [];
 
@@ -82,7 +84,7 @@ class gerecht {
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $prijs_gerecht= (($aantal / $verpakking) * $prijs);
+            $prijs_gerecht= (($ingredient["aantal"] / $ingredient["verpaking"]) * $ingredient["prijs"]);
         }
         return array_sum($prijs_gerecht);
     }
