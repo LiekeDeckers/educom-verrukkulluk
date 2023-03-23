@@ -60,27 +60,31 @@ class gerecht {
     }
 
 
-//berekenen calorien --> calorien artikel toevoegen aan tabel
+//berekenen calorien
     public function berekenCalorien($gerecht_id) {
-        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
+        $calorien_gerecht = [];
+
+        $sql = "select * from gerecht where gerecht_id = $gerecht_id)";
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $calorien_gerecht = (($aantal / $verpakking) * $calorien_artikel);
+            $calorien_gerecht = (($aantal / $verpakking) * $calorien);
         }
-        return($calorien_gerecht);
+        return array_sum($calorien_gerecht);
     }
 
 
 //berekenen prijs --> werkt niet
     public function berekenPrijs($gerecht_id) {
-        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
+        $prijs_gerecht = [];
+
+        $sql = "select * from gerecht where gerecht_id = $gerecht_id)";
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $prijs_gerecht = (($aantal / $verpakking) * $prijs);
+            $prijs_gerecht= (($aantal / $verpakking) * $prijs);
         }
-        return($prijs_gerecht);
+        return array_sum($prijs_gerecht);
     }
 
 //ophalen waardering --> werkt niet

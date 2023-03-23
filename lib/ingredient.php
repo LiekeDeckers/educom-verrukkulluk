@@ -37,7 +37,8 @@ class ingredient {
             'omschrijving' => $artikel['omschrijving'],
             'prijs' => $artikel['prijs'],
             'eenheid' => $artikel['eenheid'],
-            'verpakking' => $artikel['verpakking']
+            'verpakking' => $artikel['verpakking'],
+            'calorien' => $artikel['calorien'],
         ];
     }
 
