@@ -161,5 +161,37 @@ class gerecht {
     }
 
 
+// 1 of meerdere gerechten selecteren
+    public function selecteerGerechten($gerecht_ids = []) {
+        $gerechten = [];
 
+        foreach($gerecht_ids as $gerecht_id) {
+        $sql = "select * from gerecht where gerecht_id = $gerecht_id";
+        $result = mysqli_query($this->connection, $sql);
+
+        $kaalGerechtData = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+        $gerecht_data["id"] = $kaalGerechtData["gerecht_id"];
+        $gerecht_data["keuken"] = $this->ophalenTypeKeuken($kaalGerechtData["keuken_id"]);
+        $gerecht_data["type"] = $this->ophalenTypeKeuken($kaalGerechtData["type_id"]);
+        $gerecht_data["user"] = $this->ophalenUser($kaalGerechtData["user_id"]);
+        $gerecht_data["datum_toegevoegd"] = $kaalGerechtData["datum_toegevoegd"];
+        $gerecht_data["titel"] = $kaalGerechtData["titel"];
+        $gerecht_data["korte_omschrijving"] = $kaalGerechtData["korte_omschrijving"];
+        $gerecht_data["lange_omschrijving"] = $kaalGerechtData["lange_omschrijving"];
+        $gerecht_data["ingredienten"] = $this->ophalenIngredient($kaalGerechtData["gerecht_id"]);
+        $gerecht_data["favoriet"] = $this->ophalenFavoriet($kaalGerechtData["gerecht_id"]);
+        $gerecht_data["waardering"] = $this->ophalenWaardering($kaalGerechtData["gerecht_id"]);
+        $gerecht_data["bereidingswijze"] = $this->ophalenBereiding($kaalGerechtData["gerecht_id"]);
+        $gerecht_data["opmerkingen"] = $this->ophalenOpmerking($kaalGerechtData["gerecht_id"]);
+        $gerecht_data["prijs_gerecht"] = $this->berekenPrijs($gerecht_data["ingredienten"]);
+        $gerecht_data["calorieen"] = $this->berekenCalorieen($gerecht_data["ingredienten"]);
+        $gerecht_data["gemiddelde_waardering"] = $this->berekenGemiddeldeWaardering($gerecht_data["waardering"]);
+
+        $gerechten[] = $gerecht_data;
+        }
+
+        return $gerechten;
+
+    }
 }
