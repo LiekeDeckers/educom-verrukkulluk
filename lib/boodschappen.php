@@ -12,7 +12,7 @@ class boodschappen {
     public function __construct($connection) {
         $this->connection = $connection;
         $this->usr = new user($connection);
-        $this->tk = new artikel($connection);
+        $this->art = new artikel($connection);
         $this->ing = new ingredient($connection);
     }
 
@@ -40,8 +40,8 @@ class boodschappen {
         $result = mysqli_query($this->connection, $sql);
 
         while($ingredient = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $data_art = $this->art->ophalenArtikel($ingredient["artikel_id"]);
-            $boodschappen[] = $ingredient + $data_art;
+            $artikel = $this->ophalenArtikel($ingredient_id);
+            $boodschappen[] = $ingredient + $artikel;
         }
 
         return $boodschappen;
@@ -49,9 +49,38 @@ class boodschappen {
     }
 
 
+ // artikel op boodschappenlijst?   
+    public function artikelOpLijst($artikel_id, $user_id){
+        $boo = $this->ophalenBoodschappen($user_id);
+
+        foreach($boo as $artikel) {
+            if($artikel["artikel_id"] == $artikel) {
+                return $artikel;
+            }
+        }
+
+        return false;
+    }
+
 // toevoegen aan boodschappenlijst
     public function toevoegenBoodschappen($gerecht_id, $user_id) {
 
-    }
-    
+        $data_ing = $this->ing->selecteerIngredient($gerecht_id);
+        if (count($data_ing) == 0) {
+            return;
+        }
+
+        foreach($ingredienten as $ingredient) {
+            $gebruikt = $ingredient["aantal"] / $ingredient["verpakking"];
+
+            $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt)
+            VALUES ('$user_id', '$artikel_id', '$gebruikt);
+
+            $artikelOpLijst = $this->artikelOpLijst($artikel_id, $user_id);
+            if($artikelOpLijst == false) {
+                // update lijst
+            }
+
+        }
+    }   
 }

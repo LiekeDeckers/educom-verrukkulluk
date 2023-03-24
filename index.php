@@ -28,6 +28,8 @@ $data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'W');
 $data_ger = $ger->selecteerGerecht(2);
 $data_boo = $boo->selecteerBoodschappen(1);
 
+$data_bootoe->toevoegenBoodschappen(2,1);
+
 /// RETURN
 echo '<pre>';
 //var_dump($data_art);
