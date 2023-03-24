@@ -36,8 +36,8 @@ class gerecht {
         return($data_ing);
     }
 
-    private function ophalenGerechtInfo($gerecht_info_id) {
-        $data_gerinfo = $this->gerinfo->selecteerGerechtInfo($gerecht_info_id);
+    private function ophalenGerechtInfo($gerecht_id) {
+        $data_gerinfo = $this->gerinfo->selecteerGerechtInfo($gerecht_id);
         return($data_gerinfo);
     }
 
@@ -145,8 +145,19 @@ class gerecht {
 
 
 //bepalen favoriet 
-    public function bepaalFavoriet($gerecht_id, $user,id) {
-        
+    public function bepaalFavoriet($gerecht_id, $user_id) {
+        $favoriet_data = $this->ophalenFavoriet($gerecht_id);
+
+        foreach($favoriet_data as $favoriet) {
+            if($favoriet["user_id"] == $user_id) {
+                $isFavoriet = true;
+            }
+            else {
+                $isFavoriet = false;
+            }
+        }
+        return $isFavoriet;
+
     }
 
 
