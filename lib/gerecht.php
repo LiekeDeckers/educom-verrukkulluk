@@ -99,44 +99,56 @@ class gerecht {
         $gerecht_data["waardering"] = $this->ophalenWaardering($kaalGerechtData["gerecht_id"]);
         $gerecht_data["bereidingswijze"] = $this->ophalenBereiding($kaalGerechtData["gerecht_id"]);
         $gerecht_data["opmerkingen"] = $this->ophalenOpmerking($kaalGerechtData["gerecht_id"]);
-        //$gerecht_data["totaalprijs"] = $this->berekenPrijs($gerecht_data["ingredienten"]);
-        //$gerecht_data["calorieen"] = $this->berekenCalorieen($gerecht_data["ingredienten"]);
-        //$gerecht_data["gemiddelde_waardering"] = $this->berekenGemiddeldeWaardering($gerecht_data["waardering"]);
+        $gerecht_data["prijs_gerecht"] = $this->berekenPrijs($gerecht_data["ingredienten"]);
+        $gerecht_data["calorieen"] = $this->berekenCalorieen($gerecht_data["ingredienten"]);
+        $gerecht_data["gemiddelde_waardering"] = $this->berekenGemiddeldeWaardering($gerecht_data["waardering"]);
 
         return $gerecht_data;
     }
-} 
-
+ 
         
 
 //berekenen calorieen
-    private function berekenCalorieen($gerecht_id) {
-        $calorieen_gerecht = [];
+    private function berekenCalorieen($ingredienten) {
+        $calorieen_gerecht = 0.0;
 
-        $sql = "select * from ingredient where gerecht_id = $gerecht_id)";
-        $result = mysqli_query($this->connection, $sql);
-        $ingredient = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-
-        foreach($ingredients as $ingredient) {
-            $calorieen_gerecht = [(($ingredient["aantal"] / $ingredient["verpaking"]) * $ingredient["calorieen"])];
+        foreach($ingredienten as $ingredient) {
+            $calorieen_gerecht += ($ingredient["aantal"] / $ingredient["verpakking"]) * $ingredient["calorieen"];
         }
-        return array_sum($calorieen_gerecht);
+        return round($calorieen_gerecht);
     }
 
 
 //berekenen prijs
-    public function berekenPrijs($gerecht_id) {
-        $prijs_gerecht = [];
+    private function berekenPrijs($ingredienten) {
+        $prijs_gerecht = 0.0;
 
-        $sql = "select * from gerecht where gerecht_id = $gerecht_id)";
-        $result = mysqli_query($this->connection, $sql);
-
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $prijs_gerecht= (($ingredient["aantal"] / $ingredient["verpaking"]) * $ingredient["prijs"]);
+        foreach($ingredienten as $ingredient) {
+            $prijs_gerecht += ($ingredient["aantal"] / $ingredient["verpakking"]) * $ingredient["prijs"];
         }
-        return array_sum($prijs_gerecht); 
+        return ($prijs_gerecht); 
     }
 
-    
-//maak favoriet 
+
+//bereken gemiddelde waardering
+    private function berekenGemiddeldeWaardering($waarderingen) {
+        $somWaardering = 0;
+        $aantalWaarderingen = count($waarderingen);
+
+        foreach($waarderingen as $waardering) {
+            $somWaardering += $waardering["nummeriekveld"];
+        }
+        $gemiddeldeWaardering = $somWaardering / $aantalWaarderingen;
+
+        return $gemiddeldeWaardering;
+    }    
+
+
+//bepalen favoriet 
+    public function bepaalFavoriet($gerecht_id, $user,id) {
+        
+    }
+
+
+
+}
