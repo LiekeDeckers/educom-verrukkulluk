@@ -45,9 +45,9 @@ class gerecht_info {
         else {
             $gerecht_info[] = $row;
         }
-
-        return($gerecht_info);    
+            
         }
+        return($gerecht_info);
     }
     
 // aan favorieten toevoegen/verwijderen

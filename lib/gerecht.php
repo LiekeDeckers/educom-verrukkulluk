@@ -105,8 +105,7 @@ class gerecht {
 
         return $gerecht_data;
     }
- 
-        
+         
 
 //berekenen calorieen
     private function berekenCalorieen($ingredienten) {
