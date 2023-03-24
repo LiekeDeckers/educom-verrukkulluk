@@ -58,8 +58,7 @@ class gerecht {
     }
 
 
-
-//ophalen user
+// alles van 1 gerecht in een array
     public function selecteerGerecht($gerecht_id) {
         $gerecht_data = [
             "id" => "",
@@ -110,11 +109,6 @@ class gerecht {
 
         
 
-
-
-        
-
-/*
 //berekenen calorieen
     private function berekenCalorieen($gerecht_id) {
         $calorieen_gerecht = [];
@@ -144,51 +138,5 @@ class gerecht {
         return array_sum($prijs_gerecht); 
     }
 
-
-//ophalen waardering
-    public function selecteerGerechtInfo($gerecht_info_id, $record_type) {
-        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = 'W'";
-        echo $sql;
-        $result = mysqli_query($this->connection, $sql);
-
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $gerecht_id = $row['gerecht_id'];
-            $gerecht = $this->ophalenWaardering($gerecht_info_id);
-
-            $waardering[] = [
-                'gerecht__info_id' => $row['gerecht_info_id'],
-                'gerecht_id' => $row['gerecht_id'],
-                'record_type' => $row['record_type'],
-                'nummeriekveld' => $row['nummeriekveld'],
-            ];
-        }
-        return($waardering);
-    }
-
-
-
-//ophalen bereidingswijze stappen
-    public function selecteerBereiding($gerecht_id, $record_type) {
-        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = 'B'";
-        $result = mysqli_query($this->connection, $sql);
-
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $gerecht_id = $row['gerecht_id'];
-            $gerecht = $this->ophalenBereiding($gerecht_id);
-
-        $bereiding[] = [
-            'gerecht__info_id' => $row['gerecht_info_id'],
-            'gerecht_id' => $row['gerecht_id'],
-            'record_type' => $row['record_type'],
-            'nummeriekveld' => $gerecht_info['nummeriekveld'],
-            'tekstveld' => $gerecht_info['tekstveld'],
-        ];
-        return($bereiding);
-        }
-    }
-}
-//ophalen opmerkingen
-//ophalen keuken
-//ophalen type
+    
 //maak favoriet 
-*/
