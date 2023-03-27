@@ -39,9 +39,17 @@ class boodschappen {
         $sql = "select * from boodschappenljst where user_id = $user_id";
         $result = mysqli_query($this->connection, $sql);
 
-        while($ingredient = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $artikel = $this->ophalenArtikel($ingredient_id);
-            $boodschappen[] = $ingredient + $artikel;
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $ingredienten = $this->ophalenIngredient($row["lijst_id"]);
+            
+            $boodschappen[] = [
+                'lijst_id' => $row['lijst_id'],
+                'user_id' => $row['user_id'],
+                'ingredienten' => $ingredienten,
+                'gebruikt' => $row['gebruikt'],
+                'aantal_kopen' => $row['aantal_kopen'],
+                'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
+            ];        
         }
 
         return $boodschappen;
@@ -49,39 +57,63 @@ class boodschappen {
     }
 
 
- // artikel op boodschappenlijst?   
-    public function artikelOpLijst($artikel_id, $user_id){
-        $boo = $this->ophalenBoodschappen($user_id);
-
-        foreach($boo as $artikel) {
-            if($artikel["artikel_id"] == $artikel) {
-                return $artikel;
-            }
-        }
-
-        return false;
-    }
-
 // toevoegen aan boodschappenlijst
 
     public function toevoegenBoodschappen($gerecht_id, $user_id) {
 
         $data_ing = $this->ing->selecteerIngredient($gerecht_id);
-        if (count($data_ing) == 0) {
-            return;
-        }
 
         foreach($ingredienten as $ingredient) {
             $gebruikt = $ingredient["aantal"] / $ingredient["verpakking"];
 
-            $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt)
-            VALUES ('$user_id', '$artikel_id', '$gebruikt)";
+            // al op lijst
+            if(artikelOpLijst != false) {            
+            $gebruikt += $boodschappenljst['$gebruikt'];
 
-            $artikelOpLijst = $this->artikelOpLijst($artikel_id, $user_id);
-            if($artikelOpLijst == false) {
-                // update lijst
+            $sql = "UPDATE boodschappenljst SET aantal_kopen = " . intval(ceil($gebruikt)) . ", gebruikt = $gebruikt 
+            WHERE user_id = $user_id AND artikel_id = " . $ingredient["artikel_id"]; 
             }
 
+            // nog niet op lijst
+            else {
+            $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt)
+            VALUES ('$user_id', '$artikel_id', '$gebruikt)";
+            }
         }
-    } 
-}
+
+    }
+
+
+    public function artikelOpLijst($artikel_id, $user_id) {
+        $boo = $this->selecteerBoodschappen($user_id);
+
+        foreach($boo as $artikel){
+            if($artikel["artikel_id"] == $artikel_id) {
+                return $artikel;
+            }       
+        }
+
+        return false;
+    }
+
+
+
+// verwijderen uit boodschappenlijst
+    public function verwijderBoodschappen($user_id) {
+        $sql = "DELETE FROM boodschappenljst WHERE artikel_id = $artikel_id";
+        $result = mysqli_query($this->connection,$sql);
+        echo "Verwijderd uit boodschappenlijst";
+    }
+
+
+// prijs totaal berekenen
+    private function berekenPrijsTotaal($user_id) {
+        $prijs_totaal == 0.0;
+
+        foreach($ingredienten as $ingredient) {
+            $prijs_totaal += $artikel['prijs'];
+        }
+    }    
+
+
+} 

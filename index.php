@@ -17,7 +17,7 @@ $tk = new type_keuken($db->getConnection());
 $ing = new ingredient($db->getConnection());
 $gerinfo = new gerecht_info($db->getConnection());
 $ger = new gerecht($db->getConnection());
-//$boo = new boodschappen($db->getConnection());
+$boo = new boodschappen($db->getConnection());
 
 /// VERWERK 
 $data_art = $art->selecteerArtikel(1);
@@ -26,9 +26,7 @@ $data_tk = $tk-> selecteerTypeKeuken(1);
 $data_ing = $ing->selecteerIngredient(2);
 $data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'W');
 $data_ger = $ger->selecteerGerecht(2);
-//$data_boo = $boo->selecteerBoodschappen(1);
-
-//$data_bootoe->toevoegenBoodschappen(2,1);
+$data_boo = $boo->selecteerBoodschappen(1);
 
 /// RETURN
 echo '<pre>';
@@ -37,5 +35,5 @@ echo '<pre>';
 //var_dump($data_tk);
 //var_dump($data_ing);
 //var_dump($data_gerinfo);
-var_dump($data_ger);
-//var_dump($data_boo);
+//var_dump($data_ger);
+var_dump($data_boo);
