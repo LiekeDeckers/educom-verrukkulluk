@@ -23,6 +23,8 @@ class gerecht_info {
         $result = mysqli_query($this->connection, $sql);
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $gerecht_info[] = $row;
+
             if ($record_type == 'O' || $record_type == 'F') { 
                 //var_dump($row);
                 $user_id = $row['user_id'];
@@ -42,9 +44,7 @@ class gerecht_info {
                 'email' => $user['email']
             ];
         }
-        else {
-            $gerecht_info[] = $row;
-        }
+        
             
         }
         return($gerecht_info);
