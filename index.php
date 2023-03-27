@@ -1,4 +1,16 @@
 <?php
+//// Allereerst zorgen dat de "Autoloader" uit vendor opgenomen wordt:
+require_once("./vendor/autoload.php");
+
+/// Twig koppelen:
+$loader = new \Twig\Loader\FilesystemLoader("./templates");
+/// VOOR PRODUCTIE:
+/// $twig = new \Twig\Environment($loader), ["cache" => "./cache/cc"]);
+
+/// VOOR DEVELOPMENT:
+$twig = new \Twig\Environment($loader, ["debug" => true ]);
+$twig->addExtension(new \Twig\Extension\DebugExtension());
+
 
 require_once("lib/database.php");
 require_once("lib/artikel.php");
@@ -8,7 +20,6 @@ require_once("lib/ingredient.php");
 require_once("lib/gerecht_info.php");
 require_once("lib/gerecht.php");
 require_once("lib/boodschappen.php");
-require_once("./vendor/autoload.php");
 
 /// INIT
 $db = new database();
@@ -29,15 +40,6 @@ $data_gerinfo = $gerinfo->selecteerGerechtInfo(2, 'W');
 $data_ger = $ger->selecteerGerecht(2);
 $data_boo = $boo->selecteerBoodschappen(1);
 
-/// Twig koppelen:
-$loader = new \Twig\Loader\FilesystemLoader("./templates");
-/// VOOR PRODUCTIE:
-/// $twig = new \Twig\Environment($loader), ["cache" => "./cache/cc"]);
-
-/// VOOR DEVELOPMENT:
-$twig = new \Twig\Environment($loader, ["debug" => true ]);
-$twig->addExtension(new \Twig\Extension\DebugExtension());
-
 /// RETURN
 echo '<pre>';
 //var_dump($data_art);
@@ -53,7 +55,7 @@ var_dump($data_boo);
 /// Next step, iets met je data doen. Ophalen of zo
 require_once("lib/gerecht.php");
 $gerecht = new gerecht();
-$data = $gerecht->selecteerGerecht();
+$data_ger = $gerecht->selecteerGerecht();
 
 
 /*
