@@ -68,16 +68,16 @@ class boodschappen {
 
             // al op lijst
             if(artikelOpLijst != false) {            
-            $gebruikt += $boodschappenljst['$gebruikt'];
+            $gebruikt += $boodschappenljst['gebruikt'];
 
-            $sql = "UPDATE boodschappenljst SET aantal_kopen = " . intval(ceil($gebruikt)) . ", gebruikt = $gebruikt 
+            $sql = "UPDATE boodschappenljst SET aantal_kopen = " . ceil($gebruikt) . ", gebruikt = $gebruikt 
             WHERE user_id = $user_id AND artikel_id = " . $ingredient["artikel_id"]; 
             }
 
             // nog niet op lijst
             else {
-            $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt)
-            VALUES ('$user_id', '$artikel_id', '$gebruikt)";
+            $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt, aantal_kopen) VALUES
+            VALUES ('$user_id', '$artikel_id', '$gebruikt', 'ceil($gebruikt)')";
             }
         }
 
@@ -113,6 +113,8 @@ class boodschappen {
         foreach($ingredienten as $ingredient) {
             $prijs_totaal += $artikel['prijs'];
         }
+
+        return round($prijs_totaal,2);
     }    
 
 } 
