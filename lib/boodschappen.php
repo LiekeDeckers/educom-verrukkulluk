@@ -2,7 +2,7 @@
 
 require_once("lib/user.php");
 require_once("lib/ingredient.php");
-/*
+
 class boodschappen {
     private $connection;
     private $usr;
@@ -83,4 +83,5 @@ class boodschappen {
             }
 
         }
-    } }  */
+    } 
+}
