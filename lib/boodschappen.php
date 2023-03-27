@@ -2,7 +2,7 @@
 
 require_once("lib/user.php");
 require_once("lib/ingredient.php");
-
+/*
 class boodschappen {
     private $connection;
     private $usr;
@@ -63,6 +63,7 @@ class boodschappen {
     }
 
 // toevoegen aan boodschappenlijst
+
     public function toevoegenBoodschappen($gerecht_id, $user_id) {
 
         $data_ing = $this->ing->selecteerIngredient($gerecht_id);
@@ -82,5 +83,4 @@ class boodschappen {
             }
 
         }
-    }   
-}
+    } }  */

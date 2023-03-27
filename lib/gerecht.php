@@ -59,28 +59,74 @@ class gerecht {
 
 
 // alles van 1 gerecht in een array
+    
     public function selecteerGerecht($gerecht_id) {
-        $gerecht_data = [
-            "id" => "",
-            "keuken" => [],
-            "type" => [],
-            "user" => [],
-            "datum_toegevoegd" => "",
-            "titel" => "",
-            "korte_omschrijving" => "",
-            "lange_omschrijving" => "",
-            "afbeelding" => "",
-            "ingredienten" => [],
-            "favoriet" => [],
-            "waardering" => [],
-            "bereidingswijze" => [],
-            "opmerkingen" => [],
-            "prijs_gerecht" => "",
-            "calorieen" => "",
-            "gemiddelde_waardering" => ""
+        $gerecht_data = [];
+
+        $sql = "select * from gerecht where gerecht_id = $gerecht_id";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $type_keuken_id = $row['keuken_id'];
+            $type_keuken_id = $row['type_id'];
+            $typekeuken = $this->ophalenTypeKeuken($type_keuken_id);
+
+            $user_id = $row['user_id'];
+            $user = $this->ophalenUser($user_id);
+
+            $gerecht_data[] = [
+                "gerecht_id" => $row['gerecht_id'],
+                "keuken" => $typekeuken['type_keuken_id'],
+                "type" => $typekeuken['type_keuken_id'],
+                "user" => $user['user_id'],
+                "datum_toegevoegd" => $row['datum_toegevoegd'],
+                "titel" => $row['titel'],
+                "korte_omschrijving" => $row['korte_omschrijving'],
+                "lange_omschrijving" => $row['lange_omschrijving'],
+            ];
+        }
+
+        $sql = "select * from ingredient where gerecht_id = $gerecht_id";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $gerecht_id = $row['gerecht_id'];
+            $gerecht = $this->ophalenIngredient($gerecht_id);
+
+            $gerecht_data[] = [
+                "ingredienten" => $row['ingredient_id']
+            ];
+        }
+
+        $sql = "select * from gerecht_info where gerecht_id = $gerecht_id";
+        $result = mysqli_query($this->connection, $sql);
+
+        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $gerecht_id = $row['gerecht_id'];
+            $gerecht = $this->ophalenBereiding($gerecht_id, 'B');
+            $gerecht = $this->ophalenWaardering($gerecht_id, 'W');
+            $gerecht = $this->ophalenOpmerking($gerecht_id, 'O');
+            $gerecht = $this->ophalenFavoriet($gerecht_id, 'F');
+
+            $gerecht_data[] = [
+                "favoriet" => $row['nummeriekveld'],
+                "waardering" => $row['nummeriekveld'],
+                "bereidingswijze" => $row['B'],
+                "opmerkingen" => $row['O']
+            ]; 
+        }
+
+        $gerecht_data[] = [
+            "prijs_gerecht" => $row['prijs_gerecht'],
+            "calorieen" => $row['calorieen'],
+            "gemiddelde_waardering" => $row['gemiddelde_waardering']
         ];
+        
+        return($gerecht_data);
+    }
 
-
+/*
+    public function selecteerGerecht($gerecht_id) {
         $sql = "select * from gerecht where gerecht_id = $gerecht_id";
         $result = mysqli_query($this->connection, $sql);
 
@@ -103,9 +149,9 @@ class gerecht {
         $gerecht_data["calorieen"] = $this->berekenCalorieen($gerecht_data["ingredienten"]);
         $gerecht_data["gemiddelde_waardering"] = $this->berekenGemiddeldeWaardering($gerecht_data["waardering"]);
 
-        return $gerecht_data;
+        return($gerecht_data);
     }
-         
+*/         
 
 //berekenen calorieen
     private function berekenCalorieen($ingredienten) {
@@ -161,6 +207,13 @@ class gerecht {
 
 
 // 1 of meerdere gerechten selecteren
+    public function SelecteerGerechten($dish_id = null) {
+        $sql = "select * from gerecht";
+        if(!is_null($dish_id)) {
+    }
+
+    }
+/*    
     public function selecteerGerechten($gerecht_ids = []) {
         $gerechten = [];
 
@@ -192,5 +245,5 @@ class gerecht {
 
         return $gerechten;
 
-    }
+    } */
 }
