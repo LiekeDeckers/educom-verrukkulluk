@@ -75,7 +75,7 @@ class boodschappen {
             $gebruikt = $ingredient["aantal"] / $ingredient["verpakking"];
 
             $sql = "INSERT INTO boodschappenljst(user_id, artikel_id, gebruikt)
-            VALUES ('$user_id', '$artikel_id', '$gebruikt);
+            VALUES ('$user_id', '$artikel_id', '$gebruikt)";
 
             $artikelOpLijst = $this->artikelOpLijst($artikel_id, $user_id);
             if($artikelOpLijst == false) {
