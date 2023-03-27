@@ -47,7 +47,7 @@ class boodschappen {
                 'user_id' => $row['user_id'],
                 'ingredienten' => $ingredienten,
                 'gebruikt' => $row['gebruikt'],
-                'aantal_kopen' => $row['aantal_kopen'],
+                'aantal_kopen' => $row['ceil($gebruikt)'],
                 'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
             ];        
         }
