@@ -21,6 +21,7 @@ class gerecht_info {
         $sql = "select * from gerecht_info where gerecht_id = $gerecht_id and record_type = '$record_type'";
         //echo $sql;
         $result = mysqli_query($this->connection, $sql);
+        $gerecht_info = [];
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $gerecht_info[] = $row;

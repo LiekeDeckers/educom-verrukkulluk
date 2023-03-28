@@ -48,7 +48,7 @@ class boodschappen {
                 'ingredienten' => $ingredienten,
                 'gebruikt' => $row['gebruikt'],
                 'aantal_kopen' => $row['aantal_kopen'],
-                //'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
+                'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
             ];        
         }
 
@@ -106,9 +106,9 @@ class boodschappen {
     }
 
 
-/* prijs totaal berekenen
+// prijs totaal berekenen
     private function berekenPrijsTotaal($user_id) {
-        $prijs_totaal == 0.0;
+        $prijs_totaal = 0.0;
 
         foreach($ingredienten as $ingredient) {
             $prijs_totaal += $artikel['prijs'];
@@ -116,5 +116,5 @@ class boodschappen {
 
         return round($prijs_totaal,2);
     }    
-*/
+
 } 

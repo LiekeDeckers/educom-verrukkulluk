@@ -121,6 +121,7 @@ class gerecht {
     private function berekenGemiddeldeWaardering($waarderingen) {
         $somWaardering = 0;
         $aantalWaarderingen = count($waarderingen);
+        if($aantalWaarderingen == 0) return 0;
 
         foreach($waarderingen as $waardering) {
             $somWaardering += $waardering["nummeriekveld"];
