@@ -117,3 +117,15 @@ html, body {
     height: 100px;
     background-color: #dc3439;
 }
+
+/* footer */
+.logo_footer {
+    height: 50px;
+    width: 50px;
+}
+
+.logo_contact {
+    height: 50px;
+    width: 50px;
+    margin-left: 10%;
+}

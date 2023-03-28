@@ -3,22 +3,14 @@
 
 {% block header %}
 <img src="assets/img/logo-v2.png"/>
-<header class="navigation">
 {% endblock %}
 
 
 {# nu de block content op in de main pagina vullen #}
 {% block content %}
 
-    {# Print #}
-    <h1>Heading #1</h1>
-    <h2>Heading #2</h2>
-    <h3>Heading #3 t/m 5</h3>
-
-    <h4>Dit is de template {{  title }}</h4>
-
      {% for record in data %}
-        <div class="col-12 col-md-6 gerechten">
+        <div class="col-md-9" gerechten">
             <img src="{{ record.foto }}" style="width: 100px; heigfht: 100px;">
 
             <div class="gerecht_titel"><h2>{{ record.titel }}</h2></div>
@@ -51,9 +43,10 @@
         </li>
     {% endfor %}
     <ul>
-     {# Dump #}
+    
+    {# Dump 
        <pre>
         {{ dump(data) }}
        </pre>
-
+    #}
 {% endblock %}

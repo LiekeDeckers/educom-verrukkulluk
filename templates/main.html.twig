@@ -17,7 +17,7 @@
 <body>
 <div class="container-fluid">
 {#header #}
-    <div class="row" id="header">
+    <div class="row">
         <div class="col-md-12">
         {% block header %}
             <a href="" > <img class="logo" src="assets/img/logo-v2.png"/></a>
@@ -51,7 +51,11 @@
 {#footer#}
     <div class="row">
         <div class="col-md-12">
+        {% block footer %}
             <h1>Footer</h1>
+            <a href="" > <img class="logo_footer" src="assets/img/verrukkulluk-pay-off.png"/></a>
+            <a href="" > <img class="logo_contact" src="assets/img/verrukkulluk-contact.png"/></a>
+        {% endblock %}
         </div>
     </div>
 
