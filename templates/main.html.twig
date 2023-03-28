@@ -15,68 +15,71 @@
 
 </html>
 <body>
-<div class="container-fluid">
-{#header #}
-    <div class="row">
-        <div class="col-md-12">
-        {% block header %}
-            <a href="" > <img class="logo" src="assets/img/logo-v2.png"/></a>
-            <div ><img class="menu" src="assets/img/verrukkulluk-burger.png"/></div> {#test #}
-            <textarea class="zoekbalk">Zoeken</textarea>
-        {% endblock %}   
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-{#agenda#}
+    <div class="container-fluid">
             <div class="row">
-            <div class="col-md-12" id="agenda">
-                <h2>Agenda</h2>
-                <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
-            </div>
+                <div class="col-md-12">    
+                    <div class="header"> {# Header #}
+
+                        {%  block header %}
+                        {%  endblock %}
+
+                        <form class="logo" action="./index.php" method="GET">
+                            <input type="hidden" name="action" value="homepage">
+                        </form>
+                    </div>
+                </div>
             </div>
 
-{#login#}   <div class="row">
-            <div class="col-md-12" id="login">
-                <h2>Login</h2>
-            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                                <div class="agenda"> {# Agenda #}
+                                    <div class="logo_agenda">
+                                        <img src="assets/img/verrukkulluk-agenda.png">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                                <div class="login"> {# Login #}
+                                    <div class="logo_login">
+                                        <img src="assets/img/verrukkulluk-login.png">
+                                    </div>
+                                </div>
+                        </div>
+
+                {# Content #}
+                <div class="col-md-12">                    
+                    <div class="content">
+                        {%  block content %}
+                        {%  endblock %}
+                    </div>
+                </div>
+
+
+                {# Footer #}
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer">
+                            <div class="logo_footer">   
+                                <img src="assets/img/verrukkulluk-pay-off.png"/>
+                            </div>
+                        
+                        {# Contact #}
+                            <div class="contact">
+                                <img src="assets/img/verrukkulluk-contact.png"/>
+                                <ul>
+                                    <li> Verrukkuluk </li>
+                                    <li> Poststraat 2b </li>
+                                    <li> Sittard </li>
+                                    <li> info@verrukkulluk.nl </li>
+                                </ul>
+                            </div>
+                    </div>
+                </div>
             </div>
         </div>
-
-{#gerechten#}
-        <div class="col-md-9">
-            <div class="row"> 
-            <div class="col-md-6">         
-            <h2>Content</h2>
-            {%  block content %}
-            {%  endblock %}
-            </div>
-
-            <div class="col-md-6"></div>
-            </div>
-        
-
-            <div class="row"> 
-                <div class="col-md-6"></div>
-                <div class="col-md-6"></div>
-            </div>
-        </div>
-    </div>
-
-{#footer#}
-    <div class="row">
-        <div class="col-md-12">
-        {% block footer %}
-            <h1>Footer</h1>
-            <a href="" > <img class="logo_footer" src="assets/img/verrukkulluk-pay-off.png"/></a>
-            <a href="" > <img class="logo_contact" src="assets/img/verrukkulluk-contact.png"/></a>
-        {% endblock %}
-        </div>
-    </div>
-
-
-</div>
-
-</body>
+    </body>
+</html>

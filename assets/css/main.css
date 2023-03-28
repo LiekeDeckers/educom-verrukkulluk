@@ -87,13 +87,18 @@ html, body {
 
 /* agenda en login */
 .agenda {
-    height: 20%;
+    height: 300px;
     margin-bottom: 50px;
     background-color: var(--lighter-green);
 }
 
+.logo_agenda {
+    height: 50px;
+    width: 50px;
+}
+
 .login {
-    height: 30%;
+    height: 200px;
     margin-bottom: 50px;
     background-color: var(--darker-red);
 }
