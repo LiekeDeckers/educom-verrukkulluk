@@ -1,0 +1,53 @@
+/**
+ VERRUKKULLUK HOMEPAGE.CSS
+ */
+
+
+ :root {
+
+    /* FONTS */
+    --heading: "pretty_lilyregular";
+
+    /* COLORS */
+    --dark-brown: #402214;
+    --lighter-brown:  #774231;
+    --lightest-brown: #aa4b1b;
+
+    --darker-red: #b31714;
+    --lighter-red: #dc3439;
+
+    --kahki: #fff0d6;
+
+    --darker-orange: #eb8d1f;
+    --lighter-orange: #fca01f;
+
+    --darker-green: #6e8722;
+    --lighter-green: #95b82d;
+
+    --white: #FFF;
+    --black: #000;
+
+}
+
+/* GERECHTEN */
+.gerechten{
+    display: inline-block;
+    width: 30%;
+    height: 800px;
+    margin-left: 5%;
+    margin-bottom: 5%;
+    background-color: var(--kahki);
+    outline-color: #000;    
+}
+
+.gerechten img{
+    width: 100%;
+}
+
+.korte_omschrijving{
+    height: 100px;
+    background-color: #dc3439;
+}
+
+.waardering {
+}

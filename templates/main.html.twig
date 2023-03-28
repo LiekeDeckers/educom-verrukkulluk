@@ -1,7 +1,7 @@
 <html lang="nl">
 <head>
 
-    <title>het is verrukkuluk! :: {{ TITEL }} </title>
+    <title>Verrukkuluk! :: {{ TITEL }} </title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.css" />
@@ -16,31 +16,39 @@
 </html>
 <body>
 <div class="container-fluid">
-
-    <div class="row">
+{#header #}
+    <div class="row" id="header">
         <div class="col-md-12">
         {% block header %}
-            
+            <a href="" > <img class="logo" src="assets/img/logo-v2.png"/></a>
+            <div ><img class="menu" src="assets/img/verrukkulluk-burger.png"/></div> {#test #}
+            <textarea class="zoekbalk">Zoeken</textarea>
         {% endblock %}   
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-3">
-            <h2>Agenda</h2>
-            <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-            <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+        <div class="col-md-3">       
+{#agenda#} <div class="col-md-12" id="agenda">
+                <h2>Agenda</h2>
+                <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
+                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
+            </div>
 
+{#login#}  <div class="col-md-12">
+                <h2>Login</h2>
+            </div>
 
         </div>
-        <div class="col-md-9">
+
+{#gerechten#}
+        <div class="col-md-9">                    
             <h2>Content</h2>
             {%  block content %}
             {%  endblock %}
-        </div>
     </div>
 
-
+{#footer#}
     <div class="row">
         <div class="col-md-12">
             <h1>Footer</h1>
