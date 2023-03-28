@@ -4,80 +4,23 @@
 {# header #}
 {% block header %}
 <img src="assets/img/logo-v2.png"/>
-<div class="header" style="background-image: url(https://www.google.com/imgres?imgurl=https%3A%2F%2Fwww.eurib.net%2Fwp-content%2Fuploads%2F2013%2F11%2FZien-eten-doet-eten-1.jpg&tbnid=YDPttfH3ioj3-M&vet=12ahUKEwjn8sTm0v79AhUKO-wKHc1uDCwQMygSegUIARDGAQ..i&imgrefurl=https%3A%2F%2Fwww.eurib.net%2Fzien-eten-doet-eten%2F&docid=1U1vhaeFW3dHOM&w=900&h=420&q=mooie%20foto%20etn&ved=2ahUKEwjn8sTm0v79AhUKO-wKHc1uDCwQMygSegUIARDGAQ);"></div>
+
+    <script>
+        {#fotos met vegas#}
+    </script>
+
 {% endblock %}
 
 
 {# content #}
 {% block content %}
-    <div class="homepage">
-        <div class="row">
-            {% for gerecht in data %}
-                <div class="col-md-12">
-                        <div id="gerecht_id{{gerecht.id}}" class="gerechten">
-
-                            <div class="image" style="background-image: url({{ record.foto }})"> </div>
-
-                                <div>
-                                    <h2> {{record.titel}} </h2>
-                                </div>
-
-                                <p> 
-                                    {{ record.korte_omschrijving }}
-                                </p>
-                        
-                            </div>
-                        </div>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-
-{% endblock %}
-
-
-{#
-        <div class="col-md-3">
-            <div class="row">
-            <div class="col-md-12 agenda">
-                <h2>Agenda</h2>
-                <i class="fa fa-calendar"></i> FontAwesome <a href="https://fontawesome.com/icons?d=gallery&m=free">Documentation</a><br>
-                <i class="fa fa-file-pdf"></i><a href="https://www.layoutit.com/build">Layout-it</a>
-            </div>
-            </div>
-        
-        <div class="row" >
-            <div class="col-md-12 login">
-                <h2>Login</h2>
-            </div>
-            </div>
-        </div>
-
-
-     {% for record in data %}
-        <div class="col-md-9">
-        <div class="row"> 
-            <div class="col-md-6">         
-            </div>
-                <img src="{{ record.foto }}" style="width: 100px; heigfht: 100px;">
-
-                <div class="gerecht_titel"><h2>{{ record.titel }}</h2></div>
-
-                <div class="korte_omschrijving"><p>{{record.korte_omschrijving}}</p></div>
-            <div class="col-md-6"></div>
-            </div>
-        
-
-            <div class="row"> 
-                <div class="col-md-6"></div>
-                <div class="col-md-6"></div>
-            </div>
-            </div>
-        </div>
-        </div>
+      {% for record in data %}
+       
     {% endfor %}
 
-{# Loop
+
+
+{# Loop #}
     <ul>
     {% for record in data %}
         <li>
@@ -85,13 +28,13 @@
 
 
             {{ record.title }}
-            {# sub-loop 
+            {# sub-loop #}
             <ul>
                 {% for ingr in record.ingredienten %}
                     <li>
                         <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.naam }}</span>
 
-                        {# if 
+                        {# if #}
                         {%  if ingr.id == 3 %}
                             <strong>Dit is ID 3!</strong>
                         {%  endif  %}
@@ -101,9 +44,10 @@
         </li>
     {% endfor %}
     <ul>
-  #}  
+    
     {# Dump 
        <pre>
         {{ dump(data) }}
        </pre>
     #}
+{% endblock %}

@@ -85,10 +85,11 @@ html, body {
     margin-right: 3%;
 }
 
-/* agenda en login */
+/* agenda */
 .agenda {
     height: 300px;
-    margin-bottom: 50px;
+    margin: 20px;
+    padding: 10px;
     background-color: var(--lighter-green);
 }
 
@@ -97,9 +98,12 @@ html, body {
     width: 50px;
 }
 
+
+/* agenda login */
 .login {
     height: 200px;
-    margin-bottom: 50px;
+    margin: 20px;
+    padding: 10px;
     background-color: var(--darker-red);
 }
 
