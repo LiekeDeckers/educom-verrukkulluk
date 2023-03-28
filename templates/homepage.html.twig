@@ -19,7 +19,7 @@
         </div>
     {% endfor %}
 
-{# Loop #}
+{# Loop 
     <ul>
     {% for record in data %}
         <li>
@@ -27,13 +27,13 @@
 
 
             {{ record.title }}
-            {# sub-loop #}
+            {# sub-loop 
             <ul>
                 {% for ingr in record.ingredienten %}
                     <li>
                         <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.naam }}</span>
 
-                        {# if #}
+                        {# if 
                         {%  if ingr.id == 3 %}
                             <strong>Dit is ID 3!</strong>
                         {%  endif  %}
@@ -43,7 +43,7 @@
         </li>
     {% endfor %}
     <ul>
-    
+  #}  
     {# Dump 
        <pre>
         {{ dump(data) }}
