@@ -48,7 +48,7 @@ echo '<pre>';
 //var_dump($data_ing);
 //var_dump($data_gerinfo);
 //var_dump($data_ger);
-var_dump($data_boo);
+//var_dump($data_boo);
 
 /******************************/
 
