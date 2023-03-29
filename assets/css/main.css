@@ -54,9 +54,7 @@ html, body {
 }
 
 /* header */
-.header {
-    height: 40%; 
-    margin-bottom: 50px;
+.header {   
     background-color: red;
 }
 
@@ -86,20 +84,11 @@ html, body {
 }
 
 /* agenda */
-.agenda {
-    height: 300px;
-    margin: 20px;
-    padding: 10px;
-    background-color: var(--lighter-green);
-}
-
-.logo_agenda {
-    height: 50px;
-    width: 50px;
-}
 
 
-/* agenda login */
+
+
+/* login */
 .login {
     height: 200px;
     margin: 20px;
