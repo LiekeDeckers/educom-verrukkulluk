@@ -27,40 +27,40 @@
 
 {# content #}
 {% block content %}
+
     {% for record in data %}
-       
+    <div class="gerechten">
+        <div class="row">
+            <div class="col-md-12" id="gerecht_foto">
+                <p>afbeelding</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8" color="green">
+                <h2>{{record.titel}}</h2>
+            </div>
+            <div class="col-md-4">
+                <p>waardering</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <p>{{record.korte_omschrijving}}<p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <p>smullen</p>
+            </div>
+            <div class="col-md-8">
+                <p>personen, prijs, kcal</p>
+            </div>
+        </div>
+    </div>
+
     {% endfor %}
-
-
-
-{# Loop #}
-    <ul>
-    {% for record in data %}
-        <li>
-            <img src="{{ record.foto }}" style="width: 100px; heigfht: 100px;">
-
-
-            {{ record.title }}
-            {# sub-loop #}
-            <ul>
-                {% for ingr in record.ingredienten %}
-                    <li>
-                        <span {% if ingr.id < 2 %}style='color: #F00'{% endif %}>{{  ingr.naam }}</span>
-
-                        {# if #}
-                        {%  if ingr.id == 3 %}
-                            <strong>Dit is ID 3!</strong>
-                        {%  endif  %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-    <ul>
     
-    {# Dump 
-       <pre>
-        {{ dump(data) }}
-       </pre>
-    #}
 {% endblock %}

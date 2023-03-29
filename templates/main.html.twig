@@ -25,9 +25,8 @@
 
     {# header #}
     <div class="row">
-            <div class="col-md-12" style="background-color: pink">
+            <div class="col-md-12" id="background-image">
                 <img src="assets/img/logo-v2.png" width="400" height="200">
-                <div id="background-image"></div>
                     {% block header %}
                     {% endblock %}
                 </div>
@@ -56,7 +55,6 @@
 
         {# gerechten #}
             <div class="col-md-9" style="background-color: blue">
-                <h2>Content</h2>
                 {%  block content %}
                 {%  endblock %}
             </div>

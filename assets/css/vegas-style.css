@@ -8,7 +8,6 @@ html, body {
     background-position: relative;
     height: 90%;
     background-size: cover;
-    overflow: hidden;  
 }
 
 .text-block {
