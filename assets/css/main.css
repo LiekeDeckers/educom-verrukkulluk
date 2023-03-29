@@ -54,15 +54,12 @@ html, body {
 }
 
 /* header */
-.header {   
-    background-color: red;
-}
-
-.logo {
-    width: 20%;
-    margin-left: 3%;
-    margin-top: 2%;
-    float: left;
+#background-image {
+    width: 100%;    
+    background-position: relative;
+    height: 90%;
+    background-size: cover;
+    overflow: hidden; 
 }
 
 .zoekbalk {
@@ -117,13 +114,4 @@ html, body {
 }
 
 /* footer */
-.logo_footer {
-    height: 50px;
-    width: 50px;
-}
 
-.logo_contact {
-    height: 50px;
-    width: 50px;
-    margin-left: 10%;
-}

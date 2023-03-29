@@ -3,10 +3,23 @@
 
 {# header #}
 {% block header %}
-<img src="assets/img/logo-v2.png"/>
 
     <script>
-        {#fotos met vegas#}
+        $(document).ready( function() {
+
+        const mySlides = [
+                { src: "assets/img/burger.jpg" },
+                { src: "assets/img/eggs.jpg" },
+                { src: "assets/img/pizza.jpg" },
+                { src: "assets/img/sushi.jpg" },
+            ]
+        
+        $("#background-image").vegas({
+            overlay: 'vegas/overlays/02.png',
+            slides: mySlides
+        })
+
+      })
     </script>
 
 {% endblock %}
@@ -14,7 +27,7 @@
 
 {# content #}
 {% block content %}
-      {% for record in data %}
+    {% for record in data %}
        
     {% endfor %}
 
