@@ -80,6 +80,7 @@ class gerecht {
         "titel" => $row["titel"],
         "korte_omschrijving" => $row["korte_omschrijving"],
         "lange_omschrijving" => $row["lange_omschrijving"],
+        "afbeelding" => $row["afbeelding"], 
         "ingredienten" => $ingredienten,
         "favoriet" => $this->ophalenFavoriet($row["gerecht_id"]),
         "waardering" => $waarderingen,
