@@ -53,7 +53,7 @@ html, body {
     font-size: 16px;
 }
 
-/* zoekbalk */
+/* header */
 .zoek-balk {
     background-color: var(--white);
     border-color: var(--white);
@@ -74,6 +74,46 @@ html, body {
   }
 
 
+.menu {
+    position: absolute;
+    top: 22px;
+    right: 45px;
+}
+
+.icon-menu {
+    position: absolute;
+    top: 22px;
+    right: 50px;
+    color: var(--darker-orange);
+}
+
+.menu-trigger {
+    background-color: #F00;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    z-index: 5000 !important;
+}
+
+.menu-trigger:hover {
+    background-color: #FFF000;
+}
+
+.menu-trigger:hover .dropdown {
+    top: 0px;
+}
+
+.dropdown {
+    position: fixed;
+    top: -400px;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background-color: var(--kahki);
+    transition: all 0.4s ease;
+    padding: 40px;
+}
 /* agenda */
 
 
