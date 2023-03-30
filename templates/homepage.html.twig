@@ -31,29 +31,59 @@
   <div class="row justify-content-around"> 
 
         {% for record in data %}
+
+        {# ophalen waarderingen #}
+        <script>
+            $(document).ready( function() {
+	            $('.star-{{record.gerecht.id}}').each( (index, elem) => {
+		            const rating = {{record.gemiddelde_waardering}}
+		            const itemValue = $(elem).attr('data-value')
+                    if(itemValue <= rating) {
+                        $(elem).addClass('groen')
+                    }// end if add groen
+	            })//end data ophalen 
+            })
+        </script>
+
+
             <div class="col-md-12">
-                <div class="gerechten">           
+                <div class="gerechten">
+                    {# foto #}           
                     <div class="gerechten_foto">
                         <img src="{{ record.afbeelding }}">
                     </div>
                     <div class="row gerechten_titel">
+                        {# titel #}
                         <div class="col-6">
                             <h2 style="color: var(--darker-green)">{{ record.titel }}</h2>
                         </div>
-                        <div class="col-6 gerechten_waardering">
-                            <p>sterren: {{ record.gemiddelde_waardering }}<p>
+                        {# waardering #}
+                        <div class="col-6">
+                            <div class="gerechten_waardering">
+                                {% for i in range(1, 5) %}
+                                    {% if record.gemiddelde_waardering|round >= i %} 
+                                        <i class="fas fa-star"></i>
+                                    {% else %} 
+                                        <i class="far fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                                <p>{{ record.gemiddelde_waardering }}<p>
+                            </div>
                         </div>
                     </div>
 
+                    {# omschrijving #}
                     <div class="korte_omschrijving"><p>{{record.korte_omschrijving}}</p>
                     </div>
 
                     <div class="row">
+                        {# smullen #}
                         <div class="col-6 smullen">
                             <button style="background-color: var(--lighter-red); border-radius:20px">
                                 <h3 style="color: white">Smullen!</h3>
                             </button>
-                        </div>                 
+                        </div>  
+                        {# prijs en calorieen #}               
                         <div class="col-2 gerechten_info">
                             <p><i class="fa fa-user-friends" style="color: red"></i> 4</p>
                         </div>
