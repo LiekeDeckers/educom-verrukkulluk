@@ -29,9 +29,16 @@
                 <img src="assets/img/logo-v2.png" width="400" height="200">
                     {% block header %}
                     {% endblock %}
-                </div>
-            </div>
+            
 
+                {# zoekbalk #}
+                <div class="input-container plaatsing-zoek-balk">
+				    <i class="fa fa-search fa-lg icon-zoeken"></i>
+				    <input type="text" class="zoek-balk pl-5 pb-1 pt-1" name="zoeken" placeholder="Zoeken">
+			    </div>
+                 
+
+            </div>
         {# agenda #}
         <div class="row">
             <div class="col-md-3" style="background-color: green">
@@ -81,7 +88,7 @@
                     </div>
                 </div>
             </div>
-            
+
         {# gerechten #}
             <div class="col-md-9" style="background-color: blue">
                 {%  block content %}
