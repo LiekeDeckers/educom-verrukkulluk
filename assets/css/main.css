@@ -115,16 +115,7 @@ html, body {
     padding: 40px;
 }
 
-/* agenda */
-
-
-/* login */
-.login {
-    height: 200px;
-    margin: 20px;
-    padding: 10px;
-    background-color: var(--darker-red);
-}
+/* agenda */ 
 
 /* gerechten */
 .gerechten {
