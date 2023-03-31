@@ -32,20 +32,6 @@
 
         {% for record in data %}
 
-        {# ophalen waarderingen #}
-        <script>
-            $(document).ready( function() {
-	            $('.star-{{record.gerecht.id}}').each( (index, elem) => {
-		            const rating = {{record.gemiddelde_waardering}}
-		            const itemValue = $(elem).attr('data-value')
-                    if(itemValue <= rating) {
-                        $(elem).addClass('groen')
-                    }// end if add groen
-	            })//end data ophalen 
-            })
-        </script>
-
-
             <div class="col-md-12">
                 <div class="gerechten">
                     {# foto #}           
@@ -78,10 +64,10 @@
 
                     <div class="row">
                         {# smullen #}
-                        <div class="col-6 smullen">
-                            <button style="background-color: var(--lighter-red); border-radius:20px">
-                                <h3 style="color: white">Smullen!</h3>
-                            </button>
+                        <div class="col-6">
+                            <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=detail">
+                                <center><h3 style="background-color: var(--lighter-red); border-radius:20px; color: white; width: 120px">Smullen!</h3></center>
+                            </a>
                         </div>  
                         {# prijs en calorieen #}               
                         <div class="col-2 gerechten_info">

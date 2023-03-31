@@ -115,8 +115,6 @@ html, body {
     padding: 40px;
 }
 
-/* agenda */ 
-
 /* gerechten */
 .gerechten {
     display: inline-grid;
@@ -161,5 +159,10 @@ html, body {
 }
 
 
-/* footer */
+/* detail pagina */
+.gerecht_foto {
+    background-position: center; 
+    background-size: cover;   
+    overflow: hidden;
+}
 

@@ -3,3 +3,60 @@
 {% block header %}
 <h1>Hallo Bram</h1>
 {% endblock %}
+
+
+{# content #}
+{% block content %}
+
+    {% for record in data %}
+        <div class="row"> 
+            <div class="col-md-12 mx-5 mt-5">
+                <div class="row">
+                    {# foto #}
+                    <div class="col-md-6 gerecht_foto" style="background-color: pink">
+                        <img src="assets/img/burger.jpg" alt="burger">
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="row">
+                            {# prijs en calorieen #}
+                            <div class="col-md-12 mb-4">
+                                <i class="fa fa-user-friends" style="color: red"></i> 4 &emsp;
+                                <i class="fa fa-euro-sign" style="color: red"></i> {{record.prijs_gerecht}},- &emsp;
+                                <i class="fa fa-fire" style="color: red"></i> {{record.calorieen}}        
+                            </div>
+
+                            {# titel #} 
+                            <div class="col-md-6">
+                                <h2 style="color: var(--darker-green)">{{ record.titel }}</h2>
+                            </div>
+                            {# waardering #}
+                            <div class="col-md-6">
+                                <p>sterren</p>
+                            </div>
+
+                            {# omschrijving #}
+                            <div class="col-md-12 mt-4">
+                                <div class="lange_omschrijving"><p>{{record.lange_omschrijving}}</p>
+                                <br><br><br><br><br><br><br><br><br><br>
+                                </div>
+                            </div>
+
+                            {# op lijst #} 
+                            <div class="col-md-6">
+                                <p>op lijst</p>
+                            </div>
+                            {# favoriet #}
+                            <div class="col-md-6">
+                                <p>hartje</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        
+    
+
+{% endblock %}
