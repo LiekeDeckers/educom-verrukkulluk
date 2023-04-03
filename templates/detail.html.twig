@@ -64,9 +64,20 @@
                                 <span class="star" data-value="5">*</span>
                             </div>
 
+                            {# keuken #}
+                            <div class="col-md-4">
+                                <p><h3 style="color: var(--darker-green); float: left">Keuken &ensp;</h3>{{ data.0.keuken.omschrijving }}</p>
+                            </div>
+                            {# type #}
+                            <div class="col-md-8">
+                                <div class="col-md-6">
+                                <center><p><h3 style="color: var(--darker-green); float: left">Type &ensp;</h3>{{ data.0.type.omschrijving }}</p></center>
+                            </div>
+                            </div>
+
                             {# omschrijving #}
-                            <div class="col-md-12 mt-4">
-                                <div class="lange_omschrijving" style="height: 450px"><p>{{record.lange_omschrijving}}</p>
+                            <div class="col-md-12 mt-4" style="height: 400px">
+                                <div class="lange_omschrijving"><p>{{record.lange_omschrijving}}</p>
                                 </div>
                             </div>
 
@@ -124,7 +135,7 @@
                                         </div>
                                         {# hoeveelheid #}
                                         <div class="col-md-12">
-                                            <p><h5 style="color: var(--darker-green)">Hoeveelheid:</h5>{{ record.aantal }} {{ record.eenheid }}</p>
+                                            <p><h5 style="color: var(--darker-green); float: left">Hoeveelheid: &ensp;</h5>{{ record.aantal }} {{ record.eenheid }}</p>
                                         </div>
                                     </div>
                                 </div> 
