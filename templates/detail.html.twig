@@ -6,6 +6,24 @@
 
 {# content #}
 {% block content %}
+<script>
+$(document).ready( function() {
+    
+    $(".star").click( function() {
+        const value = $(this).attr('data-value')
+
+        $(".star").removeClass('orange')
+
+        $(".star").each(index, elem) => {
+            const itemValue = $(elem).attr('data-value')
+            if(itemValue <= value) {
+            $(elem).addClass('orange')
+            }
+        }
+    })
+})
+
+</script>
 
     {% for record in data %}
         <div class="row"> 
@@ -32,6 +50,11 @@
                             {# waardering #}
                             <div class="col-md-6">
                                 <p>sterren</p>
+                                <span class="star" data-value="1">*</span>
+                                <span class="star" data-value="2">*</span>
+                                <span class="star" data-value="3">*</span>
+                                <span class="star" data-value="4">*</span>
+                                <span class="star" data-value="5">*</span>
                             </div>
 
                             {# omschrijving #}
@@ -136,7 +159,7 @@
                             </div>
                         </div>
                     </div>
-
+                </div>
             </div>
         </div>
     {% endfor %}
