@@ -19,7 +19,7 @@
             slides: mySlides
         })
 
-      })
+        })
     </script>
 
 {% endblock %}
@@ -29,69 +29,67 @@
 {% block content %}
 
     <div class="row">   
-
-           {% for record in data %}
-                <div class="col-md-6">
+        {% for record in data %}
+            <div class="col-md-6">
                 <div class="row">
-                <div class="col-md-11 ml-5 my-5" style="background-color: var(--kahki)">
+                    <div class="col-md-11 ml-5 my-5" style="background-color: var(--kahki)">
                 
-                    {# foto #}
-                    <div class="row">           
-                        <div class="col-md 12 gerechten_foto">
-                            <img src="{{ record.afbeelding }}">
-                        </div>
-                    </div>
-                    <div class="row gerechten_titel">
-                        {# titel #}
-                        <div class="col-6">
-                            <h2 style="color: var(--darker-green)">{{ record.titel }}</h2>
-                        </div>
-                        {# waardering #}
-                        <div class="col-6">
-                            <div class="gerechten_waardering">
-                                {% for i in range(1, 5) %}
-                                    {% if record.gemiddelde_waardering|round >= i %} 
-                                        <i class="fas fa-star"></i>
-                                    {% else %} 
-                                        <i class="far fa-star"></i>
-                                    {% endif %}
-                                {% endfor %}
-                                <p>{{ record.gemiddelde_waardering }}<p>
+                        {# foto #}
+                        <div class="row">           
+                            <div class="col-md 12 gerechten_foto">
+                                <img src="{{ record.afbeelding }}">
                             </div>
                         </div>
-                    </div>
+                        <div class="row gerechten_titel">
+                            {# titel #}
+                            <div class="col-6">
+                                <h2 style="color: var(--darker-green)">{{ record.titel }}</h2>
+                            </div>
+                            {# waardering #}
+                            <div class="col-6">
+                                <div class="gerechten_waardering">
+                                    {% for i in range(1, 5) %}
+                                        {% if record.gemiddelde_waardering|round >= i %} 
+                                            <i class="fas fa-star"></i>
+                                        {% else %} 
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <p>{{ record.gemiddelde_waardering }}<p>
+                                </div>
+                            </div>
+                        </div>
 
-                    {# omschrijving #}
-                    <div class="row">
-                        <div class="col-md- 12 mb-5"><p>{{record.korte_omschrijving}}</p>
+                        {# omschrijving #}
+                        <div class="row">
+                            <div class="col-md- 12 mb-5"><p>{{record.korte_omschrijving}}</p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="row">
-                        {# smullen #}
-                        <div class="col-6">
-                            <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=detail">
-                                <center><h3 style="background-color: var(--lighter-red); border-radius:20px; color: white; width: 120px">Smullen!</h3></center>
-                            </a>
-                        </div>  
-                        {# prijs en calorieen #}               
-                        <div class="col-2 gerechten_info">
-                            <p><i class="fa fa-user-friends" style="color: red"></i> 4</p>
+                        <div class="row">
+                            {# smullen #}
+                            <div class="col-6">
+                                <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=detail">
+                                    <center><h3 style="background-color: var(--lighter-red); border-radius:20px; color: white; width: 120px">Smullen!</h3></center>
+                                </a>
+                            </div>  
+                            {# prijs en calorieen #}               
+                            <div class="col-2 gerechten_info">
+                                <p><i class="fa fa-user-friends" style="color: red"></i> 4</p>
+                            </div>
+                            <div class="col-2 gerechten_info">
+                                <p><i class="fa fa-euro-sign" style="color: red"></i> {{record.prijs_gerecht}},-</p>
+                            </div>
+                            <div class="col-2 gerechten_info">
+                                <p><i class="fa fa-fire" style="color: red"></i> {{record.calorieen}}</p>         
+                            </div>
                         </div>
-                        <div class="col-2 gerechten_info">
-                            <p><i class="fa fa-euro-sign" style="color: red"></i> {{record.prijs_gerecht}},-</p>
-                        </div>
-                        <div class="col-2 gerechten_info">
-                            <p><i class="fa fa-fire" style="color: red"></i> {{record.calorieen}}</p>         
-                        </div>
-                    </div>
                        
+                    </div>
                 </div>
-                </div>
-                </div>
+            </div>
                 
-            {% endfor %}    
-            
+        {% endfor %}                
     </div>
 
 {% endblock %}

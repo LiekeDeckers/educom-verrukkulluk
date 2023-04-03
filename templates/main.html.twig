@@ -29,9 +29,10 @@
 <body>
 <div class="container-fluid">
 
-    {# header #}
+    
     <div class="row">
-            <div class="col-md-12" id="background-image">
+            {# header #}
+            <div class="col-md-12" id="background-image" style="height: 600px; background-color: pink">
                 <img src="assets/img/logo-v2.png" width="400" height="200">
                     {% block header %}
                     {% endblock %}
@@ -65,15 +66,15 @@
                     <div class="col-md-12 m-3 mt-5" style="background-color: var(--lighter-green)">
                         <center><img src="assets/img/verrukkulluk-agenda.png" width="150" height="100"></center>
                         <br>
-                        <h3><i class="fa fa-calendar" style="color:white"></i>Vegetarisch koken</h3>
+                        <h3><i class="fa fa-calendar" style="color:white"></i>&ensp;Vegetarisch koken</h3>
                             <p>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee</p>
-                        <h3><i class="fa fa-calendar" style="color:white"></i>Vegetarisch koken</h3>
+                        <h3><i class="fa fa-calendar" style="color:white"></i>&ensp;Vegetarisch koken</h3>
                             <p>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee</p>
-                        <h3><i class="fa fa-calendar" style="color:white"></i>Vegetarisch koken</h3>
+                        <h3><i class="fa fa-calendar" style="color:white"></i>&ensp;Vegetarisch koken</h3>
                             <p>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee</p>
-                        <h3><i class="fa fa-calendar" style="color:white"></i>Vegetarisch koken</h3>
+                        <h3><i class="fa fa-calendar" style="color:white"></i>&ensp;Vegetarisch koken</h3>
                             <p>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee</p>
-                        <h3><i class="fa fa-calendar" style="color:white"></i>Vegetarisch koken</h3>
+                        <h3><i class="fa fa-calendar" style="color:white"></i>&ensp;Vegetarisch koken</h3>
                             <p>Een workshop vegetarisch koken, onder leiding van Trientje Hupsakee</p>   
                     </div>
                 </div>
@@ -108,13 +109,15 @@
                     </div>
                 </div>
             </div>
+        
 
         {# gerechten #}
             <div class="col-md-9" style="background-color: blue">
                 {%  block content %}
                 {%  endblock %}
             </div>
-	</div>
+        </div>
+    </div>
 
     {# footer #}
     <div class="row" style="background-color: orange">
