@@ -24,7 +24,6 @@ class gerecht_info {
         $gerecht_info = [];
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $gerecht_info[] = $row;
 
             if ($record_type == 'O' || $record_type == 'F') { 
                 //var_dump($row);
@@ -33,18 +32,22 @@ class gerecht_info {
                 $user = $this->ophalenUser($user_id);
                 //var_dump($user);
             
-            $gerecht_info[] = [
-                'gerecht_info_id' => $row['gerecht_info_id'],
-                'record_type' => $row['record_type'],   
-                'gerecht_id' => $row['gerecht_id'],
-                'datum' => $row['datum'],
-                'nummeriekveld' => $row['nummeriekveld'],
-                'tekstveld' => $row['tekstveld'],
-                'user_name' => $user['user_name'],
-                'user_password' => $user['user_password'],
-                'email' => $user['email']
-            ];
-        }
+                $gerecht_info[] = [
+                    'gerecht_info_id' => $row['gerecht_info_id'],
+                    'record_type' => $row['record_type'],   
+                    'gerecht_id' => $row['gerecht_id'],
+                    'datum' => $row['datum'],
+                    'nummeriekveld' => $row['nummeriekveld'],
+                    'tekstveld' => $row['tekstveld'],
+                    'user_name' => $user['user_name'],
+                    'user_password' => $user['user_password'],
+                    'email' => $user['email']
+                ];
+            }
+
+            else {
+                $gerecht_info[] = $row;
+            }
         
             
         }

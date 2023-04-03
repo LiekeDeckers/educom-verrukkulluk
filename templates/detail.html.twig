@@ -6,6 +6,7 @@
 
 {# content #}
 {% block content %}
+{#
     <script>
         $(document).ready( function() {
             
@@ -21,12 +22,20 @@
                     }
                 }
             })
+
+            $.ajax({
+            url: "https://api.dev-master.ninja/js/rating",
+            method: "POST",
+            data: { rating: value },
+            success: function(result) { 
+            }
+            })
         })
     </script>
-
+#}
     {% for record in data %}
         <div class="row"> 
-            <div class="col-md-12 m-5 mt-5" style="background-color: var(--kahki); width: 1300px">
+            <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki)">
                 <div class="row">
                     {# foto #}
                     <div class="col-md-6 gerecht_foto">
@@ -48,7 +57,6 @@
                             </div>
                             {# waardering #}
                             <div class="col-md-6">
-                                <p>sterren</p>
                                 <span class="star" data-value="1">*</span>
                                 <span class="star" data-value="2">*</span>
                                 <span class="star" data-value="3">*</span>
@@ -58,18 +66,19 @@
 
                             {# omschrijving #}
                             <div class="col-md-12 mt-4">
-                                <div class="lange_omschrijving"><p>{{record.lange_omschrijving}}</p>
-                                <br><br><br><br><br><br><br><br><br><br>
+                                <div class="lange_omschrijving" style="height: 450px"><p>{{record.lange_omschrijving}}</p>
                                 </div>
                             </div>
 
                             {# op lijst #} 
                             <div class="col-md-6">
-                                <p>op lijst</p>
+                                <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=boodschappenlijst">
+                                    <center><h3 style="background-color: var(--lighter-red); border-radius:20px; color: white; width: 120px">Op lijst</h3></center>
+                                </a>
                             </div>
                             {# favoriet #}
                             <div class="col-md-6">
-                                <p>hartje</p>
+                                <center><p><i class="far fa-heart" style="font-size: 48px; color: red"></i></p></center>
                             </div>
                         </div>
                     </div>
@@ -79,35 +88,35 @@
 
         {# tabs #} 
         <div class="row">   
-            <div class="col-md-12 m-5 mt-5" style="background-color: var(--kahki); width: 1300px">
+            <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki); height: 500px">
                 
                 <div class="container">
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#home">Ingredienten</a>
+                        <a class="nav-link active" data-toggle="tab" href="#home"><h3 style="color: var(--darker-green)">Ingrediënten</h3></a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu1">Bereidingswijze</a>
+                        <a class="nav-link" data-toggle="tab" href="#menu1"><h3 style="color: var(--darker-green)">Bereidingswijze</h3></a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#menu2">Opmerkingen</a>
+                        <a class="nav-link" data-toggle="tab" href="#menu2"><h3 style="color: var(--darker-green)">Opmerkingen</h3></a>
                         </li>
                     </ul>
 
                     <div class="tab-content">
                         <div id="home" class="container tab-pane active"><br>
                             <div class="row">
-                            {% for ingr in record.ingredienten %}
+                            {% for record in record.ingredienten %}
                                 {# foto artikel #}
                                 <div class="col-md-2 mb-2" style="background-color: pink">
-                                    <img src="{{ record.afbeelding }}">
+                                    <img src={{ record.afbeelding }}>
                                 </div>
 
                                 <div class="col-md-10">
                                     <div class="row">
                                         {# naam ingredient #}
                                         <div class="col-md-12">
-                                            <h3>{{ record.naam }}</h3>
+                                            <h2 style="color: var(--darker-green)">{{ record.naam }}</h2>
                                         </div>
                                         {# omschrijving #}
                                         <div class="col-md-12">
@@ -115,7 +124,7 @@
                                         </div>
                                         {# hoeveelheid #}
                                         <div class="col-md-12">
-                                            <h5>Hoeveelheid:</h5><p>{{ record.omschrijving }}</p>
+                                            <p><h5 style="color: var(--darker-green)">Hoeveelheid:</h5>{{ record.aantal }} {{ record.eenheid }}</p>
                                         </div>
                                     </div>
                                 </div> 
@@ -125,39 +134,37 @@
                         
                         {# bereidingswijze #}
                         <div id="menu1" class="container tab-pane fade"><br>
-                            <div class="row">
+                            
                             {% for record in data.0.bereidingswijze %}
-                                <div class="col-md-2 mb-2" style="background-color: pink">
-                                    <p>{{ record.nummeriekveld }}</p>
+                            <div class="row">
+                                <div class="col-md-1 mb-2" style="background-color: var(--lighter-orange); height: 80px; border-radius: 100px; color: white">
+                                    <center><p><br>{{ record.nummeriekveld }}</p></center>
                                 </div>
 
-                                <div class="col-md-10">
-                                    <p>{{ record.tekstveld }}</p>
+                                <div class="col-md-11">
+                                    <p><br>{{ record.tekstveld }}</p>
                                 </div> 
-                            {% endfor %}
                             </div>
+                            {% endfor %}
+                            
                         </div>
 
                         {# opmerkingen #}
                         <div id="menu2" class="container tab-pane fade"><br>
-                            <div class="row">
+                            
                             {% for record in data.0.opmerkingen %}
+
+                            <div class="row">
                                 <div class="col-md-2 mb-2" style="background-color: pink">
-                                    <p>{{ record.afbeelding }}</p>
+                                    <img src={{ record.afbeelding }}>
                                 </div>
 
                                 <div class="col-md-10">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p>{{ record.user_name }}</p>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <p>{{ record.opmerking }}</p>
-                                        </div>
-                                    </div>
-                                </div> 
-                            {% endfor %}
+                                    <h2 style="color: var(--darker-green)">{{ record.user_name }}</h2>
+                                    <p>{{ record.tekstveld }}</p>
+                                </div>
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
