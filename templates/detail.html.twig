@@ -6,24 +6,23 @@
 
 {# content #}
 {% block content %}
-<script>
-$(document).ready( function() {
-    
-    $(".star").click( function() {
-        const value = $(this).attr('data-value')
+    <script>
+        $(document).ready( function() {
+            
+            $(".star").click( function() {
+                const value = $(this).attr('data-value')
 
-        $(".star").removeClass('orange')
+                $(".star").removeClass('orange')
 
-        $(".star").each(index, elem) => {
-            const itemValue = $(elem).attr('data-value')
-            if(itemValue <= value) {
-            $(elem).addClass('orange')
-            }
-        }
-    })
-})
-
-</script>
+                $(".star").each(index, elem) => {
+                    const itemValue = $(elem).attr('data-value')
+                    if(itemValue <= value) {
+                    $(elem).addClass('orange')
+                    }
+                }
+            })
+        })
+    </script>
 
     {% for record in data %}
         <div class="row"> 
@@ -76,8 +75,10 @@ $(document).ready( function() {
                     </div>
                 </div>
             </div>
+        </div>
 
-            {# tabs #}    
+        {# tabs #} 
+        <div class="row">   
             <div class="col-md-12 m-5 mt-5" style="background-color: var(--kahki); width: 1300px">
                 
                 <div class="container">
@@ -160,10 +161,10 @@ $(document).ready( function() {
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
+
     {% endfor %}
         
-    
-
 {% endblock %}
