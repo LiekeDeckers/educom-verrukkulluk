@@ -153,22 +153,23 @@ html, body {
 
 .star {
     font-size: 30px;
-    color: #000;
+    color: var(--lighter-orange);
     cursor: pointer;
-    width: 50px;
+    width: 35px;
 }
 
 .star:hover {
     color: yellow;
 }
 
-.orange {
+.fas {
     color: var(--darker-orange);
 }
 
 .hartje {
     font-size: 48px; 
     color: red;
+    cursor: pointer;
 }
 
 .hartje:hover {
