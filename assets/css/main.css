@@ -165,3 +165,12 @@ html, body {
 .orange {
     color: var(--darker-orange);
 }
+
+.hartje {
+    font-size: 48px; 
+    color: red;
+}
+
+.hartje:hover {
+    color: pink;
+}
