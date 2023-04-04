@@ -65,6 +65,12 @@ switch($action) {
             break;
         }
 
+        case "boodschappenlijst": {
+            $data = $gerecht->selecteerGerecht($gerecht_id);
+            $template = 'boodschappenlijst.html.twig';
+            $title = "boodschappenlijst";
+            break;
+        }
         /// etc
 
 }

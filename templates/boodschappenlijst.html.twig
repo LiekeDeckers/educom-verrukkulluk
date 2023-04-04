@@ -1,0 +1,93 @@
+{% extends "main.html.twig" %}
+
+{% block header %}
+    <script>
+        $(document).ready( function() {
+
+            const mySlides = [
+                { src: "assets/img/gerechten/burger.jpg" },
+                { src: "assets/img/gerechten/eggs.jpg" },
+                { src: "assets/img/gerechten/pizza.jpg" },
+                { src: "assets/img/gerechten/sushi.jpg" },
+            ]
+            
+            $("#background-image").vegas({
+                overlay: 'vegas/overlays/02.png',
+                slides: mySlides
+            })
+
+        })
+    </script>
+{% endblock %}
+
+{# content #}
+{% block content %}
+    <div class="row"> 
+        <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki)">
+            <div class="row">
+                <div class="col-md-12 mb-5 mt-2">
+                    <h1 style="color: var(--darker-green)">Boodschappen</h1>
+                </div>
+            </div>
+
+            {% for record in data %}
+            <div class="row" style="height: 950px">
+            <div class="col-md-12">
+            <div class="row">
+                {# foto #}
+                <div class="col-md-1 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }}); border: 1px solid grey;">
+                    <p>plaatje</p>
+                </div>
+                {# artikel #}
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p>naam</p>
+                            <h2 style="color: var(--darker-green)">{{ record.naam }}</h2>
+                        </div>
+                        <div class="col-md-12">
+                            <p>omschrijving</p>
+                            <p>{{ record.omschrijving }}</p>
+                        </div>
+                    </div>
+                </div>
+                {# aantal #}
+                <div class="col-md-1">
+                    <br>
+                    <p>aantal</p>
+                </div>
+                {# prijs #}
+                <div class="col-md-1">
+                    <br>
+                    <p>prijs</p>
+                </div>
+                {# verwijderen #}
+                <div class="col-md-1">
+                    <br>
+                    <p>X</p>
+                </div>
+            </div>
+            </div>
+            </div>
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-md-10">
+                    <h2 style="color: var(--darker-red)">Totaal</h2>
+                </div>
+                {# prijs totaal #}
+                <div class="col-md-1">
+                    <p>prijs</p>
+                </div>
+                {# alles verwijderen #}
+                <div class="col-md-1">
+                    <p>X</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
