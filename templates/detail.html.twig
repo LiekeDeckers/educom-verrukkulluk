@@ -8,6 +8,23 @@
 {% block content %}
 
     <script>
+        {# favoriet #}
+        var buttonfavoriet = document.getELementByClassName('favoriet');
+
+        function maakFavoriet() {
+            if (buttonfavoriet.class == "far") {
+                buttonfavoriet.class = "fas"
+            } 
+
+            else {
+                buttonfavoriet.class = "far"
+            }
+        }
+    
+        
+
+
+        {# waardering #}
         $(document).ready( function() {
             
             $(".star").click( function() {
@@ -92,7 +109,7 @@
                             </div>
                             {# favoriet #}
                             <div class="col-md-6">
-                                <center><p><i class="far fa-heart hartje"></i></p></center>
+                                <center><button onclick="maakFavoriet()" class="favoriet far fa-heart"></button></center>
                             </div>
                         </div>
                     </div>
@@ -119,7 +136,7 @@
 
                     <div class="tab-content">
                         <div id="home" class="container tab-pane active"><br>
-                        
+
                             {% for record in record.ingredienten %}
                             <div class="row">
                                 {# foto artikel #}

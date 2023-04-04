@@ -166,12 +166,15 @@ html, body {
     color: var(--darker-orange);
 }
 
-.hartje {
+.favoriet {
     font-size: 48px; 
     color: red;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
 }
 
-.hartje:hover {
+.favoriet:hover {
     color: pink;
 }
