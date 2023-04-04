@@ -161,6 +161,10 @@ html, body {
     background-position: center;
     background-size: cover;  
     overflow: hidden;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid orange;
+    
 }
 
 .star {
