@@ -5,7 +5,7 @@
         $(document).ready( function() {
 
             const mySlides = [
-                { src: "assets/img/gerechten/{{ record.afbeelding }}" }
+                { src: "assets/img/gerechten/{{ data.0.afbeelding }}" }
             ]
             
             $("#background-image").vegas({
@@ -23,7 +23,11 @@
 
     <script>
         {# favoriet #}
-        var buttonfavoriet = document.getELementByClassName('favoriet');
+        function maakFavoriet(x) {
+        x.classList.toggle("fas fa-heart");
+        }
+
+        {# var buttonfavoriet = document.getELementByClassName('favoriet');
 
         function maakFavoriet() {
             if (buttonfavoriet.class == "far") {
@@ -122,6 +126,7 @@
                             </div>
                             {# favoriet #}
                             <div class="col-md-6">
+                                <i onclick="maakFavoriet(this)" class="far fa-heart favoriet"></i>
                                 <center><button onclick="maakFavoriet()" class="favoriet far fa-heart"></button></center>
                             </div>
                         </div>
@@ -132,7 +137,7 @@
 
         {# tabs #} 
         <div class="row">   
-            <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki); height: 500px">
+            <div class="col-md-11 ml-5" style="background-color: var(--kahki)">
                 
                 <div class="container">
                     <ul class="nav nav-tabs" role="tablist">
@@ -146,74 +151,87 @@
                         <a class="nav-link" data-toggle="tab" href="#menu2"><h3 style="color: var(--darker-green)">Opmerkingen</h3></a>
                         </li>
                     </ul>
-
-                    <div class="tab-content">
-                        <div id="home" class="container tab-pane active"><br>
-
-                            {% for record in record.ingredienten %}
-                            <div class="row">
-                                {# foto artikel #}
-                                <div class="col-md-2 mb-2 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }})">
-                                </div>
-
-                                <div class="col-md-10">
-                                    <div class="row">
-                                        {# naam ingredient #}
-                                        <div class="col-md-12">
-                                            <h2 style="color: var(--darker-green)">{{ record.naam }}</h2>
-                                        </div>
-                                        {# omschrijving #}
-                                        <div class="col-md-12">
-                                            <p>{{ record.omschrijving }}</p>
-                                        </div>
-                                        {# hoeveelheid #}
-                                        <div class="col-md-12">
-                                            <p><h5 style="color: var(--darker-green); float: left">Hoeveelheid: &ensp;</h5>{{ record.aantal }} {{ record.eenheid }}</p>
-                                        </div>
-                                    </div>
-                                </div> 
-                            </div>
-                            {% endfor %}   
-                        </div>
-                        
-                        {# bereidingswijze #}
-                        <div id="menu1" class="container tab-pane fade"><br>
-                            
-                            {% for record in data.0.bereidingswijze %}
-                            <div class="row">
-                                <div class="col-md-1 mb-2" style="background-color: var(--lighter-orange); height: 80px; border-radius: 50%; color: white">
-                                    <center><p><br>{{ record.nummeriekveld }}</p></center>
-                                </div>
-
-                                <div class="col-md-11">
-                                    <p><br>{{ record.tekstveld }}</p>
-                                </div> 
-                            </div>
-                            {% endfor %}
-                            
-                        </div>
-
-                        {# opmerkingen #}
-                        <div id="menu2" class="container tab-pane fade"><br>
-                            
-                            {% for record in data.0.opmerkingen %}
-                            <div class="row">
-                                <div class="col-md-2 mb-2 user_foto" style="background-image: url(assets/img/users/{{ record.user_afbeelding }})">
-                                </div>
-
-                                <div class="col-md-10">
-                                    <h2 style="color: var(--darker-green)">{{ record.user_name }}</h2>
-                                    <p>{{ record.tekstveld }}</p>
-                                </div>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
 
             </div>
         </div>
 
+        <div class="row">   
+            <div class="col-md-11 ml-5 scroll" style="background-color: var(--kahki); height: 450px">
+
+                <div class="tab-content">
+                    <div id="home" class="container tab-pane active"><br>
+
+                        {% for record in record.ingredienten %}
+                        <div class="row">
+                            {# foto artikel #}
+                            <div class="col-md-2 mb-2 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }}); border: 1px solid grey;">
+                            </div>
+
+                            <div class="col-md-10">
+                                <div class="row">
+                                    {# naam ingredient #}
+                                    <div class="col-md-12">
+                                        <h2 style="color: var(--darker-green)">{{ record.naam }}</h2>
+                                    </div>
+                                    {# omschrijving #}
+                                    <div class="col-md-12">
+                                        <p>{{ record.omschrijving }}</p>
+                                    </div>
+                                    {# hoeveelheid #}
+                                    <div class="col-md-12">
+                                        <p><h5 style="color: var(--darker-green); float: left">Hoeveelheid: &ensp;</h5>{{ record.aantal }} {{ record.eenheid }}</p>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        {% endfor %}   
+                    </div>
+                        
+                    {# bereidingswijze #}
+                    <div id="menu1" class="container tab-pane fade"><br>
+                        
+                        {% for record in data.0.bereidingswijze %}
+                        <div class="row">
+                            <div class="col-md-1 mb-2" style="background-color: var(--lighter-orange); height: 80px; border-radius: 50%; color: white">
+                                <center><p><br><b>{{ record.nummeriekveld }}.</b></p></center>
+                            </div>
+
+                            <div class="col-md-11">
+                                <p><br>{{ record.tekstveld }}</p>
+                            </div> 
+                        </div>
+                        {% endfor %}
+                            
+                    </div>
+
+                    {# opmerkingen #}
+                    <div id="menu2" class="container tab-pane fade"><br>
+                            
+                        {% for record in data.0.opmerkingen %}
+                        <div class="row">
+                            <div class="col-md-2 mb-2 user_foto" style="background-image: url(assets/img/users/{{ record.user_afbeelding }})">
+                            </div>
+
+                            <div class="col-md-10">
+                                <h2 style="color: var(--darker-green)">{{ record.user_name }}</h2>
+                                <p>{{ record.tekstveld }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            
+            </div>
+        </div>
+
     {% endfor %}
-        
+
+        <div class="row">
+            <div class="col-md-11 ml-5 mb-5" style="background-color: var(--kahki)">
+                <center><i style="color: var(--darker-green)" class="fas fa-chevron-down fa-2x"></i></center>
+            </div>
+        </div>  
+
 {% endblock %}
