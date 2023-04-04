@@ -8,10 +8,10 @@
         $(document).ready( function() {
 
             const mySlides = [
-                { src: "assets/img/burger.jpg" },
-                { src: "assets/img/eggs.jpg" },
-                { src: "assets/img/pizza.jpg" },
-                { src: "assets/img/sushi.jpg" },
+                { src: "assets/img/gerechten/burger.jpg" },
+                { src: "assets/img/gerechten/eggs.jpg" },
+                { src: "assets/img/gerechten/pizza.jpg" },
+                { src: "assets/img/gerechten/sushi.jpg" },
             ]
             
             $("#background-image").vegas({
@@ -36,11 +36,10 @@
                 
                         {# foto #}
                         <div class="row">           
-                            <div class="col-md 12 gerechten_foto">
-                                <img src="{{ record.afbeelding }}">
+                            <div class="col-md 12 gerechten_foto" style="background-image: url(assets/img/gerechten/{{ record.afbeelding }})">
                             </div>
                         </div>
-                        <div class="row gerechten_titel">
+                        <div class="row gerechten_titel mt-3">
                             {# titel #}
                             <div class="col-6">
                                 <h2 style="color: var(--darker-green)">{{ record.titel }}</h2>

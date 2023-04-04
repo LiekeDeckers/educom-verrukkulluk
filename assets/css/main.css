@@ -118,8 +118,8 @@ html, body {
 /* gerechten */
 .gerechten_foto {
     width: 100%; 
-    height: 200px;   
-    background-position: relative;
+    height: 300px;   
+    background-position: center;
     background-size: cover;
 }
 
@@ -146,8 +146,20 @@ html, body {
 
 /* detail pagina */
 .gerecht_foto {
-    background-position: center; 
+    background-position: center;
     background-size: cover;   
+    overflow: hidden;
+}
+
+.product_foto {
+    background-position: center;
+    background-size: cover;  
+    overflow: hidden;
+}
+
+.user_foto {
+    background-position: center;
+    background-size: cover;  
     overflow: hidden;
 }
 

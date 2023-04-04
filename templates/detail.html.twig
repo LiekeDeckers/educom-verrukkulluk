@@ -1,6 +1,20 @@
 {% extends "main.html.twig" %}
 
 {% block header %}
+<script>
+        $(document).ready( function() {
+
+            const mySlides = [
+                { src: "assets/img/gerechten/{{ record.afbeelding }}" }
+            ]
+            
+            $("#background-image").vegas({
+                overlay: 'vegas/overlays/02.png',
+                slides: mySlides
+            })
+
+        })
+    </script>
 {% endblock %}
 
 
@@ -56,8 +70,7 @@
             <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki)">
                 <div class="row">
                     {# foto #}
-                    <div class="col-md-6 gerecht_foto">
-                        <img src="assets/img/burger.jpg" alt="burger">
+                    <div class="col-md-6 gerecht_foto" style="background-image: url(assets/img/gerechten/{{ record.afbeelding }})">
                     </div>
 
                     <div class="col-md-6" style="background-color: var(--kahki)">
@@ -140,8 +153,7 @@
                             {% for record in record.ingredienten %}
                             <div class="row">
                                 {# foto artikel #}
-                                <div class="col-md-2 mb-2" style="background-color: pink">
-                                    <img src={{ record.afbeelding }}>
+                                <div class="col-md-2 mb-2 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }})">
                                 </div>
 
                                 <div class="col-md-10">
@@ -186,8 +198,7 @@
                             
                             {% for record in data.0.opmerkingen %}
                             <div class="row">
-                                <div class="col-md-2 mb-2" style="background-color: pink">
-                                    <img src={{ record.afbeelding }}>
+                                <div class="col-md-2 mb-2 user_foto" style="background-image: url(assets/img/users/{{ record.user_afbeelding }})">
                                 </div>
 
                                 <div class="col-md-10">

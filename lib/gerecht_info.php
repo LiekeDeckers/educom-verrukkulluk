@@ -41,7 +41,8 @@ class gerecht_info {
                     'tekstveld' => $row['tekstveld'],
                     'user_name' => $user['user_name'],
                     'user_password' => $user['user_password'],
-                    'email' => $user['email']
+                    'email' => $user['email'],
+                    'user_afbeelding' => $user['user_afbeelding']
                 ];
             }
 
