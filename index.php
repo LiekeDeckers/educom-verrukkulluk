@@ -69,6 +69,8 @@ switch($action) {
 
         case "boodschappenlijst": {
             $data = $boodschappen->selecteerBoodschappen($user_id);
+            
+            
             $template = 'boodschappenlijst.html.twig';
             $title = "boodschappenlijst";
             break;
