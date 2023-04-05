@@ -31,15 +31,15 @@
             </div>
 
             {% for record in data %}
-            <div class="row" style="height: 950px">
-            <div class="col-md-12">
+            <div class="row">
+            <div class="col-md-12 scroll">
             <div class="row">
                 {# foto #}
                 <div class="col-md-1 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }}); border: 1px solid grey;">
                     <p>plaatje</p>
                 </div>
                 {# artikel #}
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="row">
                         <div class="col-md-12">
                             <p>naam</p>
@@ -55,33 +55,40 @@
                 <div class="col-md-1">
                     <br>
                     <p>aantal</p>
+                    <p>{{record.aantal}}</p>
                 </div>
                 {# prijs #}
                 <div class="col-md-1">
                     <br>
-                    <p>prijs</p>
+                    <i class="fa fa-euro-sign fa-2x" style="color: red"></i>
+                    <p>{{record.prijs}}</p>
+                </div>
+                {# check #}
+                <div class="col-md-1">
+                    <br>
+                    <i class="fa fa-check fa-2x" style="color: green"></i>
                 </div>
                 {# verwijderen #}
                 <div class="col-md-1">
                     <br>
-                    <p>X</p>
+                    <i class="fa fa-trash fa-2x" style="color: red"></i>
                 </div>
             </div>
             </div>
             </div>
             {% endfor %}
 
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-md-10">
                     <h2 style="color: var(--darker-red)">Totaal</h2>
                 </div>
                 {# prijs totaal #}
                 <div class="col-md-1">
-                    <p>prijs</p>
+                    <p>prijs totaal</p>
                 </div>
                 {# alles verwijderen #}
                 <div class="col-md-1">
-                    <p>X</p>
+                    <i class="fa fa-trash fa-2x" style="color: red"></i>
                 </div>
             </div>
         </div>

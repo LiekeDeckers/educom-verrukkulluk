@@ -36,6 +36,7 @@ $twig->addExtension(new \Twig\Extension\DebugExtension());
 /// Next step, iets met je data doen. Ophalen of zo
 $db = new database();
 $gerecht = new gerecht($db->getConnection());
+$boodschappen = new boodschappen($db->getConnection());
 
 
 
@@ -47,6 +48,7 @@ http://localhost/index.php?gerecht_id=4&action=detail
 
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+$user_id = 1;
 
 
 switch($action) {
@@ -66,9 +68,16 @@ switch($action) {
         }
 
         case "boodschappenlijst": {
-            $data = $gerecht->selecteerGerecht($gerecht_id);
+            $data = $boodschappen->selecteerBoodschappen($user_id);
             $template = 'boodschappenlijst.html.twig';
             $title = "boodschappenlijst";
+            break;
+        }
+
+        case "toevoegenBoodschappen": {
+            $data = $boodschappen->toevoegenBoodschappen($gerecht_id, $user_id);
+            $template = "boodschappenlijst.html.twig";
+            $title = "boodschappen";
             break;
         }
         /// etc

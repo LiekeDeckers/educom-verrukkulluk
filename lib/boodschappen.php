@@ -35,6 +35,7 @@ class boodschappen {
 
 // selecteer boodschappenlijst
     public function selecteerBoodschappen($user_id) {
+        $boodschappen = [];
 
         $sql = "select * from boodschappenljst where user_id = $user_id";
         $result = mysqli_query($this->connection, $sql);
@@ -48,7 +49,7 @@ class boodschappen {
                 'ingredienten' => $ingredienten,
                 'gebruikt' => $row['gebruikt'],
                 'aantal_kopen' => $row['aantal_kopen'],
-                'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
+                //'prijs_totaal' => $this->berekenPrijsTotaal($ingredienten) 
             ];        
         }
 
@@ -106,7 +107,7 @@ class boodschappen {
     }
 
 
-// prijs totaal berekenen
+/* prijs totaal berekenen
     private function berekenPrijsTotaal($user_id) {
         $prijs_totaal = 0.0;
 
@@ -115,6 +116,6 @@ class boodschappen {
         }
 
         return round($prijs_totaal,2);
-    }    
+    }    */
 
 } 
