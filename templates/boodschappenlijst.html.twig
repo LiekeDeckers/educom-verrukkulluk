@@ -22,6 +22,14 @@
 
 {# content #}
 {% block content %}
+<script>
+    function veranderAantal(int) {
+        
+    }
+    
+</script>
+
+
     <div class="row"> 
         <div class="col-md-11 m-5 mt-5" style="background-color: var(--kahki)">
             <div class="row">
@@ -47,11 +55,11 @@
                             <p>{{ record.omschrijving }}</p>
                         </div>
                     </div>
-                </div>
+                </div> 
                 {# aantal #}
-                <div class="col-md-1">
+                <div class="col-md-1 aantal-box">
                     <br>
-                    <p>{{record.aantal_kopen}}</p>
+                    <input type="text" style="width: 30px" value="{{ record.aantal_kopen }}"></input>
                 </div>
                 {# prijs #}
                 <div class="col-md-1">
@@ -64,9 +72,9 @@
                     <i class="fa fa-check fa-2x" style="color: green"></i>
                 </div>
                 {# verwijderen #}
-                <div class="col-md-1">
+                <div class="col-md-1" onclick="verwijderBoodschappen({{record.user_id}}, {{record.artikel_id}})">
                     <br>
-                    <i class="fa fa-trash fa-2x" style="color: red"></i>
+                    <i class="fa fa-trash fa-2x verwijder" style="color: red"></i>
                 </div>
             </div>
             </div>
@@ -90,7 +98,7 @@
                 </div>
                 {# alles verwijderen #}
                 <div class="col-md-1">
-                    <i class="fa fa-trash fa-2x" style="color: red"></i>
+                    <i class="fa fa-trash fa-2x verwijder" style="color: red"></i>
                 </div>
             </div>
         </div>

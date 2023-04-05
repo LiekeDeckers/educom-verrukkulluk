@@ -101,8 +101,8 @@ class boodschappen {
 
 
 // verwijderen uit boodschappenlijst
-    public function verwijderBoodschappen($user_id) {
-        $sql = "DELETE FROM boodschappenljst WHERE artikel_id = $artikel_id";
+    public function verwijderBoodschappen($artikel_id, $user_id) {
+        $sql = "DELETE FROM boodschappenljst WHERE artikel_id = $artikel_id and user_id = $user_id";
         $result = mysqli_query($this->connection,$sql);
         echo "Verwijderd uit boodschappenlijst";
     }

@@ -203,3 +203,16 @@ html, body {
 .scroll::-webkit-scrollbar {
     display: none;
 }
+
+
+/* boodschappenlijst */
+.aantal-box {
+    height: 10px;
+    width: 30px;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.verwijder {
+    cursor: pointer; 
+}
