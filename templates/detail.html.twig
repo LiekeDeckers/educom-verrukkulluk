@@ -22,30 +22,32 @@
 {% block content %}
 
     <script>
-        {# favoriet #}
-        function maakFavoriet(x) {
-        x.classList.toggle("fas fa-heart");
-        }
+    $(document).ready(function(){
 
-        {# var buttonfavoriet = document.getELementByClassName('favoriet');
-
-        function maakFavoriet() {
-            if (buttonfavoriet.class == "far") {
-                buttonfavoriet.class = "fas"
-            } 
-
-            else {
-                buttonfavoriet.class = "far"
-            }
-        }
-    
-        
-
-
-        {# waardering #}
-        $(document).ready( function() {
+        // favoriet
+        $("like").click(function() {
             
-            $(".star").click( function() {
+            $.ajax({
+                url:"./index.php",
+                type: "GET",
+                data: {
+                    user_id: 1,
+                    gerecht_id: data.0.gerecht_id,
+                    action: "toevoegenFavoriet",
+                };
+                success(function(){
+                    $(this).toggleClass("fas");
+                });
+            });
+
+        });
+
+    });   
+  
+
+
+        /* waardering
+            
                 const value = $(this).attr('data-value')
 
                 $(".star").removeClass('fas')
@@ -65,8 +67,8 @@
             success: function(result) { 
                 console.log(rating)
             }
-            })
-        })
+            }) */
+    
     </script>
 
     {% for record in data %}
@@ -126,8 +128,16 @@
                             </div>
                             {# favoriet #}
                             <div class="col-md-6">
-                                <i onclick="maakFavoriet(this)" class="far fa-heart favoriet"></i>
-                                <center><button onclick="maakFavoriet()" class="favoriet far fa-heart"></button></center>
+                                <a href="#" class="like">
+                                    <i class="far fa-heart favoriet" aria-hidden="true"></i>
+                                </a>
+
+
+                                {% if data.0.isFavoriet != null %}
+                                    <div class="like"><i class="fas fa-heart favoriet"></i></div>
+                                {% else %}
+                                    <div class="like"><i class="far fa-heart favoriet"></i></div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>

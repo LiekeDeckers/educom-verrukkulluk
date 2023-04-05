@@ -67,6 +67,16 @@ switch($action) {
             break;
         }
 
+        case "toevoegenFavoriet": {
+            if($dish->bepaalFavoriet($gerecht_id, $user_id) == false){
+                $gerecht_info->toevoegenFavoriet($gerecht_id, $user_id);
+            }
+            else{
+                $dish_info->verwijderenFavoriet($gerecht_id, $user_id);
+            }
+        break;
+        }
+
         case "boodschappenlijst": {
             $data = $boodschappen->selecteerBoodschappen($user_id);
             

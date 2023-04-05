@@ -74,19 +74,14 @@ class gerecht_info {
 
 
     public function toevoegenFavoriet($gerecht_id, $user_id) {
-        $favoriet_data = $this->selectGerechtInfo($gerecht_id, "F" ,$user_id);
-            $this->verwijderenFavoriet($favoriet_data[0]["id"]);
-    
         $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id') 
         VALUES ('F', $gerecht_id, $user_id)";
         $result = mysqli_query($this->connection,$sql);
-        echo "Toegevoegd aan favorieten";  
     }
 
-    public function verwijderenFavoriet($gerecht_info_id) {
-        $sql = "DELETE FROM gerecht_info WHERE id = $gerecht_info_id";
+    public function verwijderenFavoriet($gerecht_id, $user_id) {
+        $sql = "DELETE FROM gerecht_info WHERE gerecht_id = $gerecht_id and user_id = $user_id";
         $result = mysqli_query($this->connection,$sql);
-        echo "Verwijderd uit favorieten";
     }
 
 
