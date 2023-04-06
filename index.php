@@ -121,7 +121,13 @@ switch($action) {
             break;
         }
 
-    
+        case "zoeken": {
+            $data = $zoeken->zoeken();
+            $template = "homepage.html.twig";
+            $title = "homepage";
+            break;
+        }
+
 
 }
 
