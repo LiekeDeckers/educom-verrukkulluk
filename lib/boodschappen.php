@@ -44,13 +44,13 @@ class boodschappen {
             $artikel_id = $row['artikel_id'];
             $artikel = $this->ophalenArtikel($artikel_id);
 
-            $ingredient_id = $row['ingredient_id'];
-            $ingredient = $this->ophalenIngredient($ingredient_id);
+            //$ingredient_id = $row['ingredient_id'];
+            //$ingredient = $this->ophalenIngredient($ingredient_id);
 
             $boodschappen[] = [
                 'lijst_id' => $row['lijst_id'],
                 'user_id' => $row['user_id'],
-                'ingredient_id' => $row['ingredient_id'],
+                //'aantal' => $ingredient['aantal'],
                 'naam' => $artikel['naam'],
                 'omschrijving' => $artikel['omschrijving'],
                 'prijs' => $artikel['prijs'],
@@ -58,7 +58,7 @@ class boodschappen {
                 'verpakking' => $artikel['verpakking'],
                 'calorieen' => $artikel['calorieen'],
                 'artikel_afbeelding' => $artikel['artikel_afbeelding'],
-                'aantal_kopen' => $this->berekenAantal($ingredient),
+                'aantal_kopen' => $row['aantal_kopen']
             ];        
         }
 
@@ -80,7 +80,7 @@ class boodschappen {
             }
         
             else {
-                $this->artikelBijwerken($opgehaald, $artikel);
+                $this->veranderAantal($artikel);
             }
         }
     }
@@ -99,6 +99,12 @@ class boodschappen {
     }
 
 
+    public function toevoegenArtikel($artikel_id, $user_id) {
+        $sql = "INSERT INTO boodschappenljst (artikel_id, user_id, aantal_kopen)
+        VALUES ('artikel_id', 'user_id', '1')";
+        $result = mysqli_query($this->connection,$sql);
+    }
+
 
 // verwijderen uit boodschappenlijst
     public function verwijderBoodschappen($artikel_id, $user_id) {
@@ -107,26 +113,26 @@ class boodschappen {
     }
 
     function verwijderAlleBoodschappen($user_id) {
-        $sql = "delete from boodschappenljst where user_id = $user_id";
+        $sql = "DELETE FROM boodschappenljst WHERE user_id = $user_id";
         $result = mysqli_query($this -> connection, $sql);
     }
 
 
 // aantal berekenen
-    private function berekenAantal($ingredient) {
+    private function berekenAantal($artikel_id, $user_id) {
+        $ingredient = $this->ophalenIngredient($artikel_id);
+
         $aantal_kopen = 0;
-
-        foreach($ingredient as $ingredient) {
-        $aantal_kopen += ($ingredient["aantal"] / $ingredient["verpakking"]);
-        }
-
-        return ceil($aantal_kopen);
+        $aantal_kopen += ceil(($ingredient["aantal"] / $ingredient["verpakking"]));
+        
+        $sql = "UPDATE boodschappenljst SET aantal_kopen = $aantal_kopen where artikel_id = $artikel_id and user_id = $user_id";
+        $result = mysqli_query($this -> connection, $sql);
     }
 
 
 // aantal bijwerken
     function veranderAantal($artikel_id, $user_id, $aantal_nieuw) {
-        $sql = "update boodschappenljst set aantal_kopen = $aantal_nieuw where artikel_id = $artikel_id and user_id = $user_id";
-
+        $sql = "UPDATE boodschappenljst SET aantal_kopen = $aantal_nieuw where artikel_id = $artikel_id and user_id = $user_id";
+        $result = mysqli_query($this -> connection, $sql);
     }
 } 
