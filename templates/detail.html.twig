@@ -34,40 +34,46 @@
                     user_id: 1,
                     gerecht_id: data.0.gerecht_id,
                     action: "toevoegenFavoriet",
+                },
+                success: function() {
+                    if (data.0.isFavoriet != null) {
+                        $(this).addClass("fas")
+                    }
+                    else {
+                        $(this).removeClass("fas")
+                    }
                 };
-                success(function(){
-                    $(this).toggleClass("fas");
-                });
             });
 
         });
 
-    });   
-  
 
+        // waardering
+        $("waardering").click(function() {
+            const value = $(this).attr('data-value')
 
-        /* waardering
-            
-                const value = $(this).attr('data-value')
+            // clear all stars
+            $(".waardering").removeClass('fas')
 
-                $(".star").removeClass('fas')
-
-                $(".star").each(index, elem) => {
-                    const itemValue = $(elem).attr('data-value')
-                    if(itemValue <= value) {
-                    $(elem).addClass('fas')
-                    }
+            // color the stars
+            $(".waardering").each(index, elem) => {
+                const itemValue = $(elem).attr('data-value')
+                if(itemValue <= value) {
+                $(elem).addClass('fas')
                 }
-            })
+            }
 
             $.ajax({
-            url: "https://api.dev-master.ninja/js/rating",
-            method: "GET",
-            data: { rating: value },
-            success: function(result) { 
-                console.log(rating)
-            }
-            }) */
+                url: "./index.php",
+                method: "POST",
+                    data: { rating: value },
+                success: function() { 
+                    console.log(rating)
+                }
+            })
+        })
+
+    });   
     
     </script>
 
@@ -94,13 +100,20 @@
                             </div>
                             {# waardering #}
                             <div class="col-md-6 gerechten_waardering">
-                                {% for i in range(1, 5) %}
+                                <span class="waardering far fa-star star" data-value="1"></span>
+                                <span class="waardering far fa-star star" data-value="2"></span>
+                                <span class="waardering far fa-star star" data-value="3"></span>
+                                <span class="waardering far fa-star star" data-value="4"></span>
+                                <span class="waardering far fa-star star" data-value="5"></span>
+
+
+                                {#}    {% for i in range(1, 5) %}
                                         {% if record.gemiddelde_waardering|round >= i %} 
                                             <i class="fas fa-star star"></i>
                                         {% else %} 
                                             <i class="far fa-star star"></i>
                                         {% endif %}
-                                    {% endfor %}
+                                    {% endfor %}    #}
                             </div>
 
                             {# keuken #}
