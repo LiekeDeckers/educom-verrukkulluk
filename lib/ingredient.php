@@ -18,7 +18,7 @@ class ingredient {
     }
 
     public function selecteerIngredient($gerecht_id) {
-        $ingredient_artikel = [];
+        $ingredient = [];
         $sql = "select * from ingredient where gerecht_id = $gerecht_id";
         //echo $sql;
         $result = mysqli_query($this->connection, $sql);
@@ -29,7 +29,7 @@ class ingredient {
             $artikel = $this->ophalenArtikel($artikel_id);
             //var_dump($artikel);
 
-        $ingredient_artikel[]= [
+        $ingredient[]= [
             'ingredient_id' => $row['ingredient_id'],
             'gerecht_id' => $row['gerecht_id'],
             'aantal' => $row['aantal'],
@@ -43,7 +43,7 @@ class ingredient {
         ];
     }
 
-        return($ingredient_artikel);
+        return($ingredient);
     }
 
 }
