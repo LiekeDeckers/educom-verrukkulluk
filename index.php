@@ -48,6 +48,8 @@ http://localhost/index.php?gerecht_id=4&action=detail
 
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
+$aantal_nieuw = isset($_GET["aantal_nieuw"]) ? $_GET["aantal_nieuw"] : "";
+
 $user_id = 1;
 
 
@@ -77,10 +79,12 @@ switch($action) {
         break;
         }
 
+        case "toevoegenWaardering" : {
+
+        }
+
         case "boodschappenlijst": {
             $data = $boodschappen->selecteerBoodschappen($user_id);
-            
-            
             $template = 'boodschappenlijst.html.twig';
             $title = "boodschappenlijst";
             break;
@@ -89,10 +93,35 @@ switch($action) {
         case "toevoegenBoodschappen": {
             $data = $boodschappen->toevoegenBoodschappen($gerecht_id, $user_id);
             $template = "boodschappenlijst.html.twig";
-            $title = "boodschappen";
+            $title = "boodschappenlijst";
             break;
         }
-        /// etc
+
+        case "veranderAantal": {
+            $boodschappen = veranderAantal($user_id, $artikel_id, $aantal_nieuw);
+            $data = $boodschappen->selecteerBoodschappen($user_id);
+            $template = "boodschappenlijst.html.twig";
+            $title = "boodschappenlijst";
+            break;
+        }
+
+        case "verwijderBoodschappen": {
+            $boodschappen->verwijderBoodschappen($artikel_id, $user_id);
+            $data = $boodschappen->selecteerBoodschappen($user_id);
+            $template = "boodschappenlijst.html.twig";
+            $title = "boodschappenlijst";
+            break;
+        }
+
+        case "verwijderAlleBoodschappen": {
+            $boodschappen->verwijderAlleBoodschappen($user_id);
+            $data = $boodschappen->selecteerBoodschappen($user_id);
+            $template = "boodschappenlijst.html.twig";
+            $title = "boodschappenlijst";
+            break;
+        }
+
+    
 
 }
 

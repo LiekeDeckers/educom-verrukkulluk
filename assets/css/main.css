@@ -206,17 +206,17 @@ html, body {
 
 
 /* boodschappenlijst */
-.aantal-box {
-    height: 10px;
-    width: 30px;
-    background-color: white;
-    border: 1px solid grey;
+.check {
+    cursor: pointer;
 }
 
 .verwijder {
     cursor: pointer; 
 }
 
+.verwijder-alles {
+    cursor: pointer; 
+}
+
 .fas {
-    color: var(--darker-red);
 }

@@ -104,8 +104,13 @@ class boodschappen {
     public function verwijderBoodschappen($artikel_id, $user_id) {
         $sql = "DELETE FROM boodschappenljst WHERE artikel_id = $artikel_id and user_id = $user_id";
         $result = mysqli_query($this->connection,$sql);
-        echo "Verwijderd uit boodschappenlijst";
     }
+
+    function verwijderAlleBoodschappen($user_id) {
+        $sql = "delete from boodschappenljst where user_id = $user_id";
+        $result = mysqli_query($this -> connection, $sql);
+    }
+
 
 // aantal berekenen
     private function berekenAantal($ingredient) {
@@ -118,4 +123,10 @@ class boodschappen {
         return ceil($aantal_kopen);
     }
 
+
+// aantal bijwerken
+    function veranderAantal($artikel_id, $user_id, $aantal_nieuw) {
+        $sql = "update boodschappenljst set aantal_kopen = $aantal_nieuw where artikel_id = $artikel_id and user_id = $user_id";
+
+    }
 } 

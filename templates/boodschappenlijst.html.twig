@@ -23,10 +23,44 @@
 {# content #}
 {% block content %}
 <script>
-    function veranderAantal(int) {
-        
-    }
+    $(DocumentType).ready(function() {
+
+        // verwijder 1 boodschap
+        $(".verwijder").click(function() {
+            
+            artikel = $(this).attr("data-product");
+            
+            $.ajax({
+                url:"./index.php",
+                type: "GET",
+                data: {
+                    user_id: 1,
+                    artikel_id: data.0.artikel,
+                    action: "verwijderBoodschappen",
+                },
+                success: function() {
+                    $(this).remove();
+                }    
+            })
+        })
+
+        // verwijder alle boodschappen
+        $(".verwijder-alles").click(function() {
+                        
+            $.ajax({
+                url:"./index.php",
+                type: "GET",
+                data: {
+                    user_id: 1,
+                    action: "verwijderAlleBoodschappen",
+                },
+                success: function() {
+                    $(this).remove();
+                }    
+            })
+        })
     
+    })
 </script>
 
 
@@ -38,12 +72,12 @@
                 </div>
             </div>
 
+            <div class="row ml-3">
+            <div class="col-md-12 scroll" style="height: 900px">
             {% for record in data %}
-            <div class="row ml-3 mb-5">
-            <div class="col-md-12 scroll">
-            <div class="row">
+            <div class="row mb-5">
                 {# foto #}
-                <div class="col-md-1 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }}); border: 1px solid grey;">
+                <div class="col-md-1 product_foto" style="background-image: url(assets/img/producten/{{ record.artikel_afbeelding }})">
                 </div>
                 {# artikel #}
                 <div class="col-md-7">
@@ -52,14 +86,14 @@
                             <h2 style="color: var(--darker-green)">{{ record.naam }}</h2>
                         </div>
                         <div class="col-md-12">
-                            <p>{{ record.omschrijving }}</p>
+                            <p>{{ record.omschrijving }}.</p>
                         </div>
                     </div>
                 </div> 
                 {# aantal #}
-                <div class="col-md-1 aantal-box">
+                <div class="col-md-1">
                     <br>
-                    <input type="text" style="width: 30px" value="{{ record.aantal_kopen }}"></input>
+                    <input type="text" name="aantal_nieuw" style="width: 30px" value="{{ record.aantal_kopen }}"></input>
                 </div>
                 {# prijs #}
                 <div class="col-md-1">
@@ -69,7 +103,7 @@
                 {# check #}
                 <div class="col-md-1">
                     <br>
-                    <i class="fa fa-check fa-2x" style="color: green"></i>
+                    <i class="fa fa-check fa-2x check" style="color: var(--lighter-green)"></i>
                 </div>
                 {# verwijderen #}
                 <div class="col-md-1" onclick="verwijderBoodschappen({{record.user_id}}, {{record.artikel_id}})">
@@ -77,9 +111,9 @@
                     <i class="fa fa-trash fa-2x verwijder" style="color: red"></i>
                 </div>
             </div>
-            </div>
-            </div>
             {% endfor %}
+            </div>
+            </div>
 
             <div class="row mt-5">
                 <div class="col-md-9">
@@ -98,7 +132,7 @@
                 </div>
                 {# alles verwijderen #}
                 <div class="col-md-1">
-                    <i class="fa fa-trash fa-2x verwijder" style="color: red"></i>
+                    <i class="fa fa-trash fa-2x verwijder-alles" style="color: red"></i>
                 </div>
             </div>
         </div>
