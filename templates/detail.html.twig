@@ -135,7 +135,7 @@
 
                             {# op lijst #} 
                             <div class="col-md-6">
-                                <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=boodschappenlijst">
+                                <a style="text-decoration: none" href="index.php?gerecht_id={{record.id}}&action=boodschappenlijst" onclick="toevoegenBoodschappen({{record.gerecht_id}}, {{record.user_id}})">
                                     <center><h3 style="background-color: var(--lighter-red); border-radius:20px; color: white; width: 120px">Op lijst</h3></center>
                                 </a>
                             </div>
