@@ -119,7 +119,7 @@ class gerecht {
 
 
 //bereken gemiddelde waardering
-    private function berekenGemiddeldeWaardering($waarderingen) {
+public function berekenGemiddeldeWaardering($waarderingen) {
         $somWaardering = 0;
         $aantalWaarderingen = count($waarderingen);
         if($aantalWaarderingen == 0) return 0;
@@ -130,7 +130,7 @@ class gerecht {
         $gemiddeldeWaardering = $somWaardering / $aantalWaarderingen;
 
         return round($gemiddeldeWaardering,1);
-    }    
+    } 
 
 
 //bepalen favoriet 

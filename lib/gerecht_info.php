@@ -55,27 +55,12 @@ class gerecht_info {
         return($gerecht_info);
     }
     
-// aan favorieten toevoegen/verwijderen
- 
-    /* public function toevoegenFavoriet($gerecht_id, $user_id) {
-        if(($record_type == 'F' && $gerecht_id && $user_id) === false) {
-            $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id')
-            VALUES('F', $gerecht_id, $user_id)";
-            echo "Toegevoegd aan favorieten";   
-        }
-    }
-
-    public function verwijderenFavoriet($gerecht_id) {
-        if(($record_type == 'F' && $gerecht_id && $user_id) === true) {
-        $sql = "DELETE FROM gerecht_info where gerecht_id = $gerecht_id and record_type = 'F'";
-        echo "Verwijderd uit favorieten";
-        }
-    } */
 
 
+// favoriet
     public function toevoegenFavoriet($gerecht_id, $user_id) {
-        $sql = "INSERT INTO gerecht_info ('record_type', 'gerecht_id', 'user_id') 
-        VALUES ('F', $gerecht_id, $user_id)";
+        $sql = "INSERT INTO gerecht_info (record_type, gerecht_id, user_id) 
+        VALUES ('F', '$gerecht_id', '$user_id')";
         $result = mysqli_query($this->connection,$sql);
     }
 
@@ -85,6 +70,14 @@ class gerecht_info {
     }
 
 
+// waardering
+    public function toevoegenWaardering($gerecht_id, $value) {
+
+        $sql = "INSERT INTO gerecht_info (record_type, gerecht_id, nummeriekveld) 
+        VALUES ('W', '$gerecht_id', '$value')";
+        $result = mysqli_query($this->connection,$sql);
+
+    }
 }
 
 

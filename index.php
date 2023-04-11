@@ -49,6 +49,8 @@ http://localhost/index.php?gerecht_id=4&action=detail
 $gerecht_id = isset($_GET["gerecht_id"]) ? $_GET["gerecht_id"] : "";
 $action = isset($_GET["action"]) ? $_GET["action"] : "homepage";
 $aantal_nieuw = isset($_GET["aantal_nieuw"]) ? $_GET["aantal_nieuw"] : "";
+$waardering = isset($_GET["aantal"]) ? $_GET["aantal"] : 0;
+$value = isset($_GET["value"]) ? $_GET["value"] : "";
 
 $user_id = 1;
 
@@ -79,8 +81,20 @@ switch($action) {
         break;
         }
 
-        case "toevoegenWaardering" : {
+        case "waardering" : {
 
+            $gi = new gerecht_info($db->getConnection());
+
+            $nw = $gi->toevoegenWaardering($gerecht_id, $value);
+
+            $alle = $gi->selecteerGerechtInfo($gerecht_id, "W");
+            $w = $gerecht->berekenGemiddeldeWaardering($alle);
+
+            $data = ["gemiddelde" => $w];
+            $output = json_encode($data);
+            header('Content-Type: application/json; charset=utf-8');
+            echo $output;
+            die();
         }
 
         case "boodschappenlijst": {

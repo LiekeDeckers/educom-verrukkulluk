@@ -9,7 +9,7 @@
             ]
             
             $("#background-image").vegas({
-                overlay: 'vegas/overlays/02.png',
+                overlay: 'assets/vegas/overlays/02.png',
                 slides: mySlides
             })
 
@@ -25,56 +25,59 @@
     $(document).ready(function(){
 
         // favoriet
-        $("like").click(function() {
+        $(".like").click(function() {
             
             $.ajax({
                 url:"./index.php",
                 type: "GET",
                 data: {
                     user_id: 1,
-                    gerecht_id: data.0.gerecht_id,
+                    gerecht_id: {{ data.0.id }},
                     action: "toevoegenFavoriet",
                 },
-                success: function() {
-                    if (data.0.isFavoriet != null) {
-                        $(this).addClass("fas")
-                    }
-                    else {
-                        $(this).removeClass("fas")
-                    }
-                };
-            });
+                success: function(result) {
 
-        });
+                    console.log(result);
+                    //     $(this).addClass("fas")
+                   // }
+                   // else {
+                   //     $(this).removeClass("fas")
+                }
+                })
+            })
 
+ 
 
         // waardering
-        $("waardering").click(function() {
+        $(".waardering").click(function() {
             const value = $(this).attr('data-value')
 
             // clear all stars
             $(".waardering").removeClass('fas')
 
             // color the stars
-            $(".waardering").each(index, elem) => {
+            $(".waardering").each( (index, elem) => {
                 const itemValue = $(elem).attr('data-value')
                 if(itemValue <= value) {
-                $(elem).addClass('fas')
+                    $(elem).addClass('fas')
                 }
-            }
+            })
 
             $.ajax({
                 url: "./index.php",
-                method: "POST",
-                    data: { rating: value },
-                success: function() { 
-                    console.log(rating)
+                method: "GET",
+                    data: { value: value,
+                            gerecht_id: {{ data.0.id }},
+                            action: "waardering"
+                    },
+                success: function(result) { 
+                    console.log(result)
                 }
             })
+
         })
 
-    });   
-    
+    })
     </script>
 
     {% for record in data %}
